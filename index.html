@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TCU Study Abroad – Transportation & Sustainability</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    /* ---- Basic reset ---- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f7;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    /* ---- Layout ---- */
+    header {
+      background: #4d1979; /* TCU-like purple */
+      color: #fff;
+      padding: 1.5rem 1.25rem;
+    }
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    header p {
+      max-width: 720px;
+      font-size: 0.98rem;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1.25rem;
+    }
+
+    /* ---- Filters ---- */
+    .filters {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem 1rem 0.25rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      align-items: flex-end;
+    }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 180px;
+      flex: 1 1 180px;
+    }
+    .filter-group label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+      margin-bottom: 0.35rem;
+    }
+    .filter-group select {
+      padding: 0.4rem 0.5rem;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    .filters-reset {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 0.75rem;
+    }
+    .filters-reset button {
+      border: none;
+      background: transparent;
+      color: #4d1979;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* ---- Results ---- */
+    .summary {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.75rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (min-width: 992px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 0.9rem 0.9rem 0.8rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.04);
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+      border: 1px solid #e1e1e6;
+    }
+    .card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.4rem;
+    }
+    .card-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .badge-grade-A { background: #0c9f6a; color: #fff; }
+    .badge-grade-B { background: #2d7dd2; color: #fff; }
+    .badge-grade-C { background: #f0a202; color: #fff; }
+    .badge-grade-D { background: #d7263d; color: #fff; }
+    .badge-type {
+      background: #f2f0f8;
+      color: #4d1979;
+      margin-top: 0.2rem;
+    }
+    .card-meta {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 0.35rem;
+    }
+    .card-description {
+      font-size: 0.85rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      flex: 1 1 auto;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.1rem;
+      font-size: 0.8rem;
+    }
+    .card-link {
+      color: #4d1979;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    .no-results {
+      padding: 1rem;
+      font-size: 0.9rem;
+      background: #fff;
+      border-radius: 6px;
+      border: 1px dashed #ccc;
+    }
+
+    /* ---- Detail panel ---- */
+    .detail-panel-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      padding: 1rem;
+    }
+    .detail-panel {
+      background: #fff;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .detail-header {
+      padding: 0.9rem 1rem 0.4rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .detail-header-main h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.15rem;
+    }
+    .detail-header-main p {
+      font-size: 0.85rem;
+      color: #555;
+    }
+    .detail-header-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.2rem;
+    }
+    .detail-body {
+      padding: 0.8rem 1rem 1rem;
+      font-size: 0.88rem;
+      overflow-y: auto;
+    }
+    .detail-section {
+      margin-bottom: 0.65rem;
+    }
+    .detail-section h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #555;
+      margin-bottom: 0.25rem;
+    }
+    .detail-section p {
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .detail-footer {
+      padding: 0.65rem 1rem 0.8rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+    }
+    .detail-footer a {
+      color: #fff;
+      background: #4d1979;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.82rem;
+    }
+    .detail-footer a:hover {
+      background: #3b135d;
+    }
+    .detail-close-btn {
+      border: none;
+      background: transparent;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #555;
+      padding: 0.1rem 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Transportation & Sustainability Options Abroad</h1>
+      <p>
+        Explore student-friendly transportation in TCU semester program cities. 
+        Filter by city, type, and sustainability grade to see how you can get around 
+        and travel from the airport when you land.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="filters" aria-label="Filters">
+      <div class="filter-group">
+        <label for="cityFilter">City</label>
+        <select id="cityFilter">
+          <option value="all">All cities</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="typeFilter">Transport type</label>
+        <select id="typeFilter">
+          <option value="all">All types</option>
+          <option value="Public transit">Public transit</option>
+          <option value="Regional rail / pass">Regional rail / pass</option>
+          <option value="Bike share / bike">Bike share / bike</option>
+          <option value="Airport train / metro">Airport train / metro</option>
+          <option value="Airport bus / coach / shuttle">Airport bus / coach / shuttle</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="gradeFilter">Sustainability grade</label>
+        <select id="gradeFilter">
+          <option value="all">All grades</option>
+          <option value="A">A – Very low emissions</option>
+          <option value="B">B – Lower emissions</option>
+          <option value="C">C – Mixed / higher emissions</option>
+          <option value="D">D – Highest emissions</option>
+        </select>
+      </div>
+
+      <div class="filters-reset">
+        <button id="resetFilters" type="button">Reset filters</button>
+      </div>
+    </section>
+
+    <p class="summary" id="summaryText"></p>
+
+    <section id="cardsContainer" class="cards-grid" aria-live="polite"></section>
+
+    <div id="noResults" class="no-results" style="display:none;">
+      No transportation options match these filters yet. Try changing the city,
+      type, or sustainability grade.
+    </div>
+  </main>
+
+  <!-- Detail panel -->
+  <div class="detail-panel-backdrop" id="detailBackdrop" aria-hidden="true">
+    <article class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <header class="detail-header">
+        <div class="detail-header-main">
+          <h2 id="detailTitle"></h2>
+          <p id="detailLocation"></p>
+        </div>
+        <div class="detail-header-badges">
+          <span id="detailGradeBadge" class="badge"></span>
+          <span id="detailTypeBadge" class="badge badge-type"></span>
+        </div>
+        <button class="detail-close-btn" id="detailCloseBtn" aria-label="Close details">&times;</button>
+      </header>
+      <div class="detail-body">
+        <div class="detail-section">
+          <h3>Overview</h3>
+          <p id="detailDescription"></p>
+        </div>
+        <div class="detail-section">
+          <h3>Typical costs</h3>
+          <p id="detailCost"></p>
+        </div>
+        <div class="detail-section">
+          <h3>Why this sustainability grade?</h3>
+          <p id="detailSustainability"></p>
+        </div>
+        <div class="detail-section" id="detailProgramsSection">
+          <h3>TCU programs served</h3>
+          <p id="detailPrograms"></p>
+        </div>
+      </div>
+      <footer class="detail-footer">
+        <span id="detailNote"></span>
+        <a id="detailLink" href="#" target="_blank" rel="noopener noreferrer">View official info</a>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    // ---- Data model: key options for each city ----
+    // Fields:
+    // city, country, programs, name, type, cost, sustainabilityGrade, sustainabilityNotes, description, link, note
+    const transportOptions = [
+      /* Athens, Greece */
+      {
+        city: "Athens",
+        country: "Greece",
+        programs: "Athens, Greece – American College of Greece (Semester)",
+        name: "ATH.ENA Card – Athens Metro, Bus & Tram",
+        type: "Public transit",
+        cost: "Single 90‑min ticket about €1.20–€1.40; 30‑day city pass around €27–€30 (student discounts may apply).",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electric metro and tram plus high‑capacity buses; strong alternative to private cars.",
+        description: "Reloadable smart card for Athens’ metro, tram, buses, and trolleybuses. Ideal for daily commuting during a semester.",
+        link: "[oasa.gr](https://www.oasa.gr/en)",
+        note: "Best to buy soon after arrival at major metro stations."
+      },
+      {
+        city: "Athens",
+        country: "Greece",
+        programs: "Athens, Greece – American College of Greece (Semester)",
+        name: "Metro Line 3 / Suburban Rail – Airport to City",
+        type: "Airport train / metro",
+        cost: "Airport–city special ticket roughly €9–€10 one way.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Rail-based connection with decent occupancy, but dedicated airport surcharge and limited trips.",
+        description: "Direct rail connection from Athens International Airport to central stops like Syntagma and Monastiraki in about 40–45 minutes.",
+        link: "[aia.gr](https://www.aia.gr/traveler/access-and-transportation)",
+        note: "Look for signs to Metro/Train after baggage claim."
+      },
+      {
+        city: "Athens",
+        country: "Greece",
+        programs: "Athens, Greece – American College of Greece (Semester)",
+        name: "Express Airport Buses (X95, etc.)",
+        type: "Airport bus / coach / shuttle",
+        cost: "One-way ticket about €5–€6.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Diesel buses but move many passengers per trip, reducing per-person emissions.",
+        description: "24/7 express buses link Athens airport to central areas like Syntagma; good option for late-night arrivals.",
+        link: "[oasa.gr](https://www.oasa.gr/en/route-info/airport-lines)",
+        note: "Buy tickets at airport kiosks or on board (card or cash, depending on bus)."
+      },
+
+      /* Dublin, Ireland */
+      {
+        city: "Dublin",
+        country: "Ireland",
+        programs: "Dublin, Ireland – University College Dublin (Semester)",
+        name: "TFI Leap Card – Dublin Bus, Luas, DART & Commuter Rail",
+        type: "Public transit",
+        cost: "City fares about €1.30–€2.00 with Leap; daily/weekly caps limit your total spend.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Mix of buses and electrified rail; significantly reduces car use for most city travel.",
+        description: "Reloadable card covering Dublin Bus, Luas trams, and DART/commuter trains. Core tool for everyday commuting in Dublin.",
+        link: "[about.leapcard.ie](https://about.leapcard.ie)",
+        note: "Ask about student Leap options during orientation."
+      },
+      {
+        city: "Dublin",
+        country: "Ireland",
+        programs: "Dublin, Ireland – University College Dublin (Semester)",
+        name: "Dublin Bikes",
+        type: "Bike share / bike",
+        cost: "Low-cost short rides; first 30 minutes typically cheapest, with access/registration fees.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Zero direct emissions and encourages active transport.",
+        description: "Docked bike-share system around central Dublin; great for short trips when you’re comfortable cycling in city traffic.",
+        link: "[dublinbikes.ie](https://www.dublinbikes.ie)",
+        note: "Check docking station availability in the app before you ride."
+      },
+      {
+        city: "Dublin",
+        country: "Ireland",
+        programs: "Dublin, Ireland – University College Dublin (Semester)",
+        name: "Airport Coaches – Aircoach & Dublin Express",
+        type: "Airport bus / coach / shuttle",
+        cost: "One-way typically €7–€10 depending on route and operator.",
+        sustainabilityGrade: "C",
+        sustainabilityNotes: "Highway coaches with moderate occupancy; lower emissions per person than taxis but higher than rail.",
+        description: "Frequent coaches from Dublin Airport to central Dublin and popular neighborhoods, often with luggage space and Wi‑Fi.",
+        link: "[aircoach.ie](https://www.aircoach.ie)",
+        note: "Look up the stop closest to your housing before you fly."
+      },
+
+      /* Hirakata, Japan (Kansai) */
+      {
+        city: "Hirakata (Kansai Region)",
+        country: "Japan",
+        programs: "Hirakata, Japan – Kansai Gaidai University (Semester)",
+        name: "ICOCA – JR West Smartcard",
+        type: "Public transit",
+        cost: "Pay-as-you-go; local trips typically ¥150–¥500 depending on distance.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electrified rail network with very high ridership and low per-person emissions.",
+        description: "Rechargeable IC card usable on JR West trains and many private lines and buses across the Kansai region (Osaka, Kyoto, Kobe).",
+        link: "[westjr.co.jp](https://www.westjr.co.jp/global/en/ticket/icoca)",
+        note: "Great base card for weekend trips around Kansai."
+      },
+      {
+        city: "Hirakata (Kansai Region)",
+        country: "Japan",
+        programs: "Hirakata, Japan – Kansai Gaidai University (Semester)",
+        name: "JR West Kansai Area Pass",
+        type: "Regional rail / pass",
+        cost: "1–4 day passes starting around ¥2,400 (check latest prices).",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Intercity rail is one of the lowest-emission ways to travel regionally.",
+        description: "Short-term rail passes ideal for exploring Kyoto, Nara, Kobe, and other cities on weekends or breaks.",
+        link: "[westjr.co.jp](https://www.westjr.co.jp/global/en/ticket/kansai)",
+        note: "Best when you plan several train trips in a short time window."
+      },
+      {
+        city: "Hirakata (Kansai Region)",
+        country: "Japan",
+        programs: "Hirakata, Japan – Kansai Gaidai University (Semester)",
+        name: "Kansai Airport – Limited Express Haruka",
+        type: "Airport train / metro",
+        cost: "One-way to Osaka/Kyoto roughly ¥3,000–¥4,000; discount combos with ICOCA exist.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electric airport rail with high occupancy and predictable schedules.",
+        description: "Direct limited express train from Kansai International Airport to Osaka and Kyoto, great when carrying luggage.",
+        link: "[westjr.co.jp](https://www.westjr.co.jp/global/en/ticket/icoca-haruka)",
+        note: "Look for ICOCA & HARUKA combination tickets for savings."
+      },
+
+      /* Paris, France */
+      {
+        city: "Paris",
+        country: "France",
+        programs: "Paris, France – Paris College of Art; Accent Study Center (Semester)",
+        name: "Navigo Pass – Île‑de‑France Mobilités",
+        type: "Public transit",
+        cost: "Weekly passes around €30–€40; monthly passes around €85 for common zones (student discounts possible).",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Extensive electric metro and RER suburban rail; strong alternative to driving.",
+        description: "Unlimited travel pass on metro, RER, buses, and trams in the Paris region. Ideal for semester-long daily use.",
+        link: "[iledefrance-mobilites.fr](https://www.iledefrance-mobilites.fr/en/tickets-fares/navigo-passes)",
+        note: "Plan zones based on where you live and study."
+      },
+      {
+        city: "Paris",
+        country: "France",
+        programs: "Paris, France – Paris College of Art; Accent Study Center (Semester)",
+        name: "RER B & Roissybus – Airport to City",
+        type: "Airport train / metro",
+        cost: "RER B to city about €11–€12; Roissybus similar price but bus-only.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "RER B is electrified rail; Roissybus is high‑occupancy coach.",
+        description: "RER B is the fastest budget option from Charles de Gaulle Airport to central Paris; Roissybus and other buses are easy alternatives.",
+        link: "[parisaeroport.fr](https://www.parisaeroport.fr/en/passengers/access)",
+        note: "Check which stop is closest to your housing before you arrive."
+      },
+
+      /* Prague, Czech Republic */
+      {
+        city: "Prague",
+        country: "Czech Republic",
+        programs: "Prague, Czech Republic – Charles University (Semester)",
+        name: "PID Lítačka – Prague Integrated Transport Pass",
+        type: "Public transit",
+        cost: "30‑day city pass roughly CZK 550–600; student discounts often available.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Dense metro and tram network with very high ridership and low per-person emissions.",
+        description: "Integrated card/app for Prague’s metro, trams, and buses. Very affordable for semester-long commuting.",
+        link: "[pidlitacka.cz](https://www.pidlitacka.cz)",
+        note: "Ask about student verification for discounted passes."
+      },
+      {
+        city: "Prague",
+        country: "Czech Republic",
+        programs: "Prague, Czech Republic – Charles University (Semester)",
+        name: "Prague Airport – Bus 119 + Metro / Airport Express",
+        type: "Airport bus / coach / shuttle",
+        cost: "Regular PID ticket about CZK 40–50 for bus + metro; Airport Express slightly higher.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Bus plus metro combination is lower-emission than taxis and private shuttles.",
+        description: "Bus 119 links the airport to Nádraží Veleslavín metro station, from which you can reach most parts of the city.",
+        link: "[prg.aero](https://www.prg.aero/en/public-transport-buses)",
+        note: "Buy a PID ticket that covers both the bus and metro portion."
+      },
+
+      /* Stellenbosch, South Africa */
+      {
+        city: "Stellenbosch",
+        country: "South Africa",
+        programs: "Stellenbosch, South Africa – Stellenbosch University (Semester)",
+        name: "Local Buses & University Shuttles",
+        type: "Public transit",
+        cost: "Fares vary; some routes may be subsidized for students.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Shared buses reduce individual car trips, but fleet is mostly combustion-powered.",
+        description: "Combination of municipal buses and university-run shuttles connecting campus, residences, and key parts of town.",
+        link: "[sun.ac.za](https://www.sun.ac.za/english/mobility-office)",
+        note: "Follow local safety guidance and schedules from the university."
+      },
+      {
+        city: "Stellenbosch",
+        country: "South Africa",
+        programs: "Stellenbosch, South Africa – Stellenbosch University (Semester)",
+        name: "Cape Town Airport – Shuttle / Coach to Stellenbosch",
+        type: "Airport bus / coach / shuttle",
+        cost: "Shared shuttles priced per person (hundreds of ZAR); private taxis and ride-hail cost more.",
+        sustainabilityGrade: "C",
+        sustainabilityNotes: "Road-based vehicles with moderate occupancy; better than solo taxi, but higher-emission than rail.",
+        description: "Students typically use reputable shuttle companies or ride-hail services from Cape Town International Airport to Stellenbosch.",
+        link: "[capetown-airport.com](https://www.capetown-airport.com/transport)",
+        note: "Book with a recommended provider shared by TCU or the host university."
+      },
+
+      /* Florence, Italy */
+      {
+        city: "Florence",
+        country: "Italy",
+        programs: "Florence, Italy – Scuola Lorenzo de’ Medici (Semester)",
+        name: "ATAF & Busitalia – Buses & Tram",
+        type: "Public transit",
+        cost: "Single 90‑min ticket about €1.70–€2.00; monthly passes around €35–€50 (student options possible).",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Combination of buses and growing electric tram network.",
+        description: "Main public transport within and around Florence, especially useful beyond the walkable historic center.",
+        link: "[ataf.net](https://www.ataf.net)",
+        note: "Great for commutes to housing or campuses outside the city core."
+      },
+      {
+        city: "Florence",
+        country: "Italy",
+        programs: "Florence, Italy – Scuola Lorenzo de’ Medici (Semester)",
+        name: "Tram Line T2 – Airport to City",
+        type: "Airport train / metro",
+        cost: "Regular city tram ticket (~€1.70–€2.00) from Amerigo Vespucci Airport to the city.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electric tramline with high occupancy.",
+        description: "Direct tram link between Florence Airport and the city; simple and budget-friendly upon arrival.",
+        link: "[gestramvia.it](https://www.gestramvia.it)",
+        note: "Validate your ticket as soon as you board."
+      },
+
+      /* Rome, Italy */
+      {
+        city: "Rome",
+        country: "Italy",
+        programs: "Rome, Italy – American University of Rome (Semester)",
+        name: "ATAC – Metro, Bus & Tram",
+        type: "Public transit",
+        cost: "Single tickets around €1.50–€2.00; monthly passes roughly €35–€50 (under‑26/student discounts possible).",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Mix of electric metro and combustion buses; significantly better than private car use.",
+        description: "Integrated system covering metro lines A/B/C, buses, and trams; essential for getting around a large city like Rome.",
+        link: "[atac.roma.it](https://www.atac.roma.it)",
+        note: "Rush hours can be very busy; plan extra time for commutes."
+      },
+      {
+        city: "Rome",
+        country: "Italy",
+        programs: "Rome, Italy – American University of Rome (Semester)",
+        name: "Fiumicino Airport – Leonardo Express / Regional Train / Buses",
+        type: "Airport train / metro",
+        cost: "Leonardo Express around €14 one way; regional trains and coach buses cheaper.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electric trains are lower-emission than taxis; coaches offer mid-range sustainability.",
+        description: "Leonardo Express is a non-stop train to Termini station; regional trains and airport coaches are slower but often cheaper.",
+        link: "[romeairport.net](https://www.romeairport.net/transportation)",
+        note: "Choose based on your budget, luggage, and arrival time."
+      },
+
+      /* London (Roehampton & Westminster), UK */
+      {
+        city: "London",
+        country: "United Kingdom",
+        programs: "London – University of Roehampton & University of Westminster (Semester)",
+        name: "Oyster / Contactless – Transport for London",
+        type: "Public transit",
+        cost: "Single bus fare about £1.75; daily and weekly caps vary by zones (e.g., around £8–£10/day for central zones).",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Extensive electric-heavy network (Tube, many buses) and very high ridership.",
+        description: "Tap-on/tap-off system covering Tube, buses, Overground, DLR, and many National Rail services within London.",
+        link: "[tfl.gov.uk](https://tfl.gov.uk/fares)",
+        note: "Use your contactless bank card or phone instead of a separate Oyster if you prefer."
+      },
+      {
+        city: "London",
+        country: "United Kingdom",
+        programs: "London – University of Roehampton & University of Westminster (Semester)",
+        name: "Travelcard – Weekly / Monthly",
+        type: "Public transit",
+        cost: "Weekly Zone 1–2 passes around £40+; higher for more zones.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Encourages high use of public transit instead of individual car trips.",
+        description: "Unlimited travel within chosen zones for a fixed period, best if you commute every day within the same area.",
+        link: "[tfl.gov.uk](https://tfl.gov.uk/fares/find-fares/tube-and-rail-fares/travelcards)",
+        note: "Compare expected weekly usage to pay-as-you-go caps."
+      },
+      {
+        city: "London",
+        country: "United Kingdom",
+        programs: "London – University of Roehampton & University of Westminster (Semester)",
+        name: "Heathrow / Gatwick – Trains & Coaches",
+        type: "Airport train / metro",
+        cost: "Heathrow Express around £25–£30 (advance discounts); Elizabeth line/Piccadilly line significantly cheaper; coaches vary.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electric trains are the lowest‑emission choice, coaches are moderate.",
+        description: "Multiple options connect major London airports to the city: fast premium trains, regular rail, Tube services, and coaches.",
+        link: "[heathrow.com](https://www.heathrow.com/transport-and-directions)",
+        note: "Balance cost, travel time, and how much luggage you have."
+      },
+
+      /* Oxford, UK */
+      {
+        city: "Oxford",
+        country: "United Kingdom",
+        programs: "Oxford, UK – St Catherine’s College (Semester)",
+        name: "Oxford Bus Company & Stagecoach – Local Buses",
+        type: "Public transit",
+        cost: "Single fares a few pounds; day/weekly tickets and smartcards available.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Buses reduce individual car trips, though the fleet is mostly combustion-powered.",
+        description: "Primary public transport within Oxford, handy for routes that are less comfortable to walk or cycle.",
+        link: "[oxfordbus.co.uk](https://www.oxfordbus.co.uk)",
+        note: "Check for student ticket offers and multi-ride passes."
+      },
+      {
+        city: "Oxford",
+        country: "United Kingdom",
+        programs: "Oxford, UK – St Catherine’s College (Semester)",
+        name: "Airline Coaches – Heathrow & Gatwick to Oxford",
+        type: "Airport bus / coach / shuttle",
+        cost: "Typical one-way fares around £25–£40 depending on airport and time.",
+        sustainabilityGrade: "C",
+        sustainabilityNotes: "Highway coach travel; per-person emissions lower than taxis but higher than rail.",
+        description: "Direct coach services connect London’s major airports to Oxford, convenient with luggage and no transfers.",
+        link: "[oxfordbus.co.uk](https://www.oxfordbus.co.uk/airline)",
+        note: "Check timetables that match your flight arrival time."
+      },
+
+      /* Barcelona, Spain */
+      {
+        city: "Barcelona",
+        country: "Spain",
+        programs: "Barcelona, Spain – TCU Semester Program",
+        name: "ATM Barcelona – T‑casual & T‑usual",
+        type: "Public transit",
+        cost: "T‑casual (10 trips) roughly €12–€15; T‑usual (30‑day unlimited) roughly €40–€50.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Strong metro and regional train network with high ridership.",
+        description: "Integrated tickets and passes for metro, buses, trams, and local trains. Students often use T‑usual for unlimited travel.",
+        link: "[tmb.cat](https://www.tmb.cat/en/tickets-fares)",
+        note: "Check whether a monthly pass or 10‑trip card fits your travel habits."
+      },
+      {
+        city: "Barcelona",
+        country: "Spain",
+        programs: "Barcelona, Spain – TCU Semester Program",
+        name: "Hola Barcelona Travel Card",
+        type: "Public transit",
+        cost: "2–5 day unlimited passes priced by duration; includes airport metro in many options.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Unlimited use of primarily electric or high-capacity transit modes.",
+        description: "Short-term unlimited card for metro, buses, trams, and local trains; helpful for first days or visiting family.",
+        link: "[holabarcelona.com](https://www.holabarcelona.com)",
+        note: "Great for early arrival days before your semester-long pass starts."
+      },
+      {
+        city: "Barcelona",
+        country: "Spain",
+        programs: "Barcelona, Spain – TCU Semester Program",
+        name: "Barcelona Airport – Metro L9 Sud / R2 Nord / Aerobús",
+        type: "Airport train / metro",
+        cost: "Metro and train follow normal or slightly higher fares; Aerobús around €6–€7 one way.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Metro and regional trains are low‑emission; coach is moderate but still better than taxis.",
+        description: "Multiple options from the airport to city centre and key stations, including metro line L9 Sud, R2 Nord train, and Aerobús coach.",
+        link: "[aena.es](https://www.aena.es/en/barcelona-airport/transport)",
+        note: "Pick the route that best matches your housing location."
+      },
+
+      /* Madrid, Spain */
+      {
+        city: "Madrid",
+        country: "Spain",
+        programs: "Madrid, Spain – Universidad Nebrija (Semester)",
+        name: "Abono Transporte – Youth & Adult Passes",
+        type: "Public transit",
+        cost: "Monthly youth passes (under 26) are heavily discounted; adult passes vary by zones.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Extensive metro and suburban rail system with high ridership.",
+        description: "Integrated passes covering metro, city buses, and Cercanías suburban trains. Perfect for semester-long daily commuting.",
+        link: "[crtm.es](https://www.crtm.es)",
+        note: "Apply early for youth discounts if you qualify."
+      },
+      {
+        city: "Madrid",
+        country: "Spain",
+        programs: "Madrid, Spain – Universidad Nebrija (Semester)",
+        name: "Madrid Airport – Metro, Cercanías & Exprés Aeropuerto Bus",
+        type: "Airport train / metro",
+        cost: "Metro/rail tickets with an added airport supplement; Exprés Aeropuerto bus about €5.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Metro and Cercanías are electric; the bus is a high-occupancy option.",
+        description: "Several public transport options from Adolfo Suárez Madrid–Barajas Airport, integrating well with city passes.",
+        link: "[aena.es](https://www.aena.es/en/adolfo-suarez-madrid-barajas-airport/transport)",
+        note: "Metro and Cercanías are often fastest during peak times."
+      },
+
+      /* Seville, Spain */
+      {
+        city: "Seville",
+        country: "Spain",
+        programs: "Seville, Spain – Universidad Pablo de Olavide (Semester)",
+        name: "TUSSAM – Seville Bus Network",
+        type: "Public transit",
+        cost: "Single tickets around €1.40–€1.60; rechargeable cards reduce per-ride cost.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Bus-based network that reduces car usage within the city.",
+        description: "Main public bus system for Seville; many students walk or bike for short distances and use buses for longer trips.",
+        link: "[tussam.es](https://www.tussam.es)",
+        note: "Consider a rechargeable card if you ride frequently."
+      },
+      {
+        city: "Seville",
+        country: "Spain",
+        programs: "Seville, Spain – Universidad Pablo de Olavide (Semester)",
+        name: "Metro de Sevilla",
+        type: "Public transit",
+        cost: "Zone-based fares, inexpensive for most student use.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electric light metro line with relatively low emissions.",
+        description: "Single metro line connecting key parts of Seville and nearby suburbs, including areas near the university.",
+        link: "[metro-sevilla.es](https://www.metro-sevilla.es)",
+        note: "Useful for longer trips across the city or to certain suburbs."
+      },
+      {
+        city: "Seville",
+        country: "Spain",
+        programs: "Seville, Spain – Universidad Pablo de Olavide (Semester)",
+        name: "Seville Airport – EA Bus Line",
+        type: "Airport bus / coach / shuttle",
+        cost: "One-way fare about €4–€5.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Shared bus is lower-emission than individual taxis.",
+        description: "Direct bus between Seville Airport and the city centre with several convenient stops.",
+        link: "[aena.es](https://www.aena.es/en/seville-airport/transport)",
+        note: "Tickets are usually purchased on board; keep some cash or card ready."
+      },
+
+      /* Sydney, Australia */
+      {
+        city: "Sydney",
+        country: "Australia",
+        programs: "Sydney, Australia – University of Sydney (Semester)",
+        name: "Opal Card – Sydney & NSW",
+        type: "Public transit",
+        cost: "Fares vary by distance and mode; daily and weekly caps plus off‑peak discounts.",
+        sustainabilityGrade: "B",
+        sustainabilityNotes: "Mix of electric trains/light rail and buses; lower emissions than personal cars.",
+        description: "Stored-value smartcard for trains, buses, ferries, and light rail in Sydney and many regional areas.",
+        link: "[transportnsw.info](https://transportnsw.info/tickets-opal/opal)",
+        note: "Register your card online so you can top up and protect your balance."
+      },
+      {
+        city: "Sydney",
+        country: "Australia",
+        programs: "Sydney, Australia – University of Sydney (Semester)",
+        name: "Sydney Trains & Light Rail",
+        type: "Public transit",
+        cost: "Covered by Opal; off‑peak fares are cheaper than peak times.",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electrified rail and light rail are lower-emission options for city commuting.",
+        description: "Fast and reliable options for commuting from suburbs to campus or the central business district.",
+        link: "[transportnsw.info](https://transportnsw.info/routes/trains)",
+        note: "Try to travel off‑peak when possible for cheaper fares and less crowding."
+      },
+      {
+        city: "Sydney",
+        country: "Australia",
+        programs: "Sydney, Australia – University of Sydney (Semester)",
+        name: "Sydney Airport – Airport Train",
+        type: "Airport train / metro",
+        cost: "Standard Opal fare plus a station access fee (often totalling AUD 15+ one way).",
+        sustainabilityGrade: "A",
+        sustainabilityNotes: "Electric train connection with high capacity and frequent service.",
+        description: "Direct train from Sydney Airport terminals to Central Station and many other stops across the network.",
+        link: "[sydneyairport.com.au](https://www.sydneyairport.com.au/airport-guide/transport)",
+        note: "Fastest and often simplest way into the city with luggage."
+      },
+      {
+        city: "Sydney",
+        country: "Australia",
+        programs: "Sydney, Australia – University of Sydney (Semester)",
+        name: "Sydney Airport – Shared Shuttles & Buses",
+        type: "Airport bus / coach / shuttle",
+        cost: "Per-person fares; often cheaper than taxis but slower than the train.",
+        sustainabilityGrade: "C",
+        sustainabilityNotes: "Shared vehicles reduce emissions compared with solo taxis, but still road-based.",
+        description: "Pre-booked shuttles serve major hostels, campuses, and neighborhoods; helpful for housing far from train stations.",
+        link: "[sydneyairport.com.au](https://www.sydneyairport.com.au/airport-guide/transport#shuttle-bus)",
+        note: "Confirm pickup location and time in advance."
+      }
+    ];
+
+    // ---- Utilities ----
+    function uniqueCities(data) {
+      const set = new Set();
+      data.forEach(item => set.add(`${item.city}, ${item.country}`));
+      return Array.from(set).sort();
+    }
+
+    function gradeBadgeClass(grade) {
+      return {
+        "A": "badge-grade-A",
+        "B": "badge-grade-B",
+        "C": "badge-grade-C",
+        "D": "badge-grade-D"
+      }[grade] || "badge-grade-B";
+    }
+
+    // ---- Render filters ----
+    const cityFilter = document.getElementById("cityFilter");
+    const typeFilter = document.getElementById("typeFilter");
+    const gradeFilter = document.getElementById("gradeFilter");
+    const resetFiltersBtn = document.getElementById("resetFilters");
+    const cardsContainer = document.getElementById("cardsContainer");
+    const noResultsEl = document.getElementById("noResults");
+    const summaryText = document.getElementById("summaryText");
+
+    function populateCityFilter() {
+      const cities = uniqueCities(transportOptions);
+      cities.forEach(label => {
+        const opt = document.createElement("option");
+        opt.value = label;
+        opt.textContent = label;
+        cityFilter.appendChild(opt);
+      });
+    }
+
+    // ---- Render cards ----
+    function getFilteredOptions() {
+      const cityVal = cityFilter.value;
+      const typeVal = typeFilter.value;
+      const gradeVal = gradeFilter.value;
+
+      return transportOptions.filter(opt => {
+        const label = `${opt.city}, ${opt.country}`;
+        const cityMatch = cityVal === "all" || cityVal === label;
+        const typeMatch = typeVal === "all" || opt.type === typeVal;
+        const gradeMatch = gradeVal === "all" || opt.sustainabilityGrade === gradeVal;
+        return cityMatch && typeMatch && gradeMatch;
+      });
+    }
+
+    function renderCards() {
+      const filtered = getFilteredOptions();
+      cardsContainer.innerHTML = "";
+
+      if (filtered.length === 0) {
+        noResultsEl.style.display = "block";
+        summaryText.textContent = "0 transportation options found for these filters.";
+        return;
+      }
+
+      noResultsEl.style.display = "none";
+      summaryText.textContent = `${filtered.length} transportation option${filtered.length !== 1 ? "s" : ""} found.`;
+
+      filtered.forEach(opt => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `Details for ${opt.name}`);
+
+        card.innerHTML = `
+          <div class="card-header">
+            <div>
+              <div class="card-title">${opt.name}</div>
+              <span class="badge badge-type">${opt.type}</span>
+            </div>
+            <span class="badge ${gradeBadgeClass(opt.sustainabilityGrade)}">Grade ${opt.sustainabilityGrade}</span>
+          </div>
+          <div class="card-meta">
+            ${opt.city}, ${opt.country}
+          </div>
+          <p class="card-description">${opt.description}</p>
+          <div class="card-footer">
+            <span>${opt.programs}</span>
+            <a class="card-link" href="${opt.link}" target="_blank" rel="noopener noreferrer">Official info</a>
+          </div>
+        `;
+
+        card.addEventListener("click", () => openDetail(opt));
+        card.addEventListener("keypress", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openDetail(opt);
+          }
+        });
+
+        cardsContainer.appendChild(card);
+      });
+    }
+
+    // ---- Detail panel logic ----
+    const detailBackdrop = document.getElementById("detailBackdrop");
+    const detailCloseBtn = document.getElementById("detailCloseBtn");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailLocation = document.getElementById("detailLocation");
+    const detailGradeBadge = document.getElementById("detailGradeBadge");
+    const detailTypeBadge = document.getElementById("detailTypeBadge");
+    const detailDescription = document.getElementById("detailDescription");
+    const detailCost = document.getElementById("detailCost");
+    const detailSustainability = document.getElementById("detailSustainability");
+    const detailPrograms = document.getElementById("detailPrograms");
+    const detailProgramsSection = document.getElementById("detailProgramsSection");
+    const detailNote = document.getElementById("detailNote");
+    const detailLink = document.getElementById("detailLink");
+
+    function openDetail(opt) {
+      detailTitle.textContent = opt.name;
+      detailLocation.textContent = `${opt.city}, ${opt.country}`;
+      detailGradeBadge.textContent = `Grade ${opt.sustainabilityGrade}`;
+      detailGradeBadge.className = `badge ${gradeBadgeClass(opt.sustainabilityGrade)}`;
+      detailTypeBadge.textContent = opt.type;
+      detailDescription.textContent = opt.description;
+      detailCost.textContent = opt.cost || "Check the official website for the latest prices.";
+      detailSustainability.textContent = opt.sustainabilityNotes || "";
+      if (opt.programs) {
+        detailProgramsSection.style.display = "block";
+        detailPrograms.textContent = opt.programs;
+      } else {
+        detailProgramsSection.style.display = "none";
+      }
+      detailNote.textContent = opt.note || "";
+      detailLink.href = opt.link || "#";
+
+      detailBackdrop.style.display = "flex";
+      detailBackdrop.setAttribute("aria-hidden", "false");
+    }
+
+    function closeDetail() {
+      detailBackdrop.style.display = "none";
+      detailBackdrop.setAttribute("aria-hidden", "true");
+    }
+
+    detailCloseBtn.addEventListener("click", closeDetail);
+    detailBackdrop.addEventListener("click", (e) => {
+      if (e.target === detailBackdrop) {
+        closeDetail();
+      }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeDetail();
+    });
+
+    // ---- Filters ----
+    [cityFilter, typeFilter, gradeFilter].forEach(el => {
+      el.addEventListener("change", renderCards);
+    });
+
+    resetFiltersBtn.addEventListener("click", () => {
+      cityFilter.value = "all";
+      typeFilter.value = "all";
+      gradeFilter.value = "all";
+      renderCards();
+    });
+
+    // ---- Init ----
+    populateCityFilter();
+    renderCards();
+  </script>
+</body>
+</html>
