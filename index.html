@@ -1223,6 +1223,61 @@
   }
 
   // ================================================================
+  // COST RANGE HELPER
+  // Parses tiers and returns a "low – high" string for the Cost column.
+  // Falls back to cost_display when there are no parseable tiers.
+  // ================================================================
+  function costRange(row) {
+    if (!row.tiers || row.tiers.length === 0) return row.cost_display || "—";
+
+    // Extract a leading currency symbol/prefix and a numeric value from each tier
+    const parsed = [];
+    for (const t of row.tiers) {
+      const raw = t.cost || "";
+      // Skip non-numeric entries like "Free", "Opal rate", "Amount not listed…"
+      if (/^(free|opal|amount)/i.test(raw.trim())) {
+        if (/^free/i.test(raw.trim())) parsed.push({ sym: "", num: 0, raw: "Free" });
+        continue;
+      }
+      // Strip trailing descriptors like " / month", " / year", " / day"
+      const cleaned = raw.replace(/\s*\/\s*(month|year|day|week)\b.*/i, "").trim();
+      // Match: optional prefix (CZK, AUD) then optional symbol (€£¥$) then number
+      // e.g. "€1.20", "CZK 36", "AUD $19.30", "£1.75", "from €130.00", "€0.50–€3.00"
+      // For range costs like "€0.50–€3.00" use the lower bound
+      const m = cleaned.match(/^(?:from\s+)?(?:(CZK|AUD)\s+)?([€£¥$]?)\s*([\d,]+(?:\.\d+)?)/i);
+      if (m) {
+        const prefix = m[1] ? m[1] + " " + (m[2] || "") : "";  // "CZK " or "AUD $" or ""
+        const sym    = prefix || m[2];             // prefer prefix; fallback to symbol
+        const num    = parseFloat(m[3].replace(/,/g, ""));
+        parsed.push({ sym, num, raw: cleaned });
+      }
+    }
+
+    if (parsed.length === 0) return row.cost_display || "—";
+
+    // If every tier is Free
+    if (parsed.every(p => p.raw === "Free")) return "Free";
+
+    const nums = parsed.map(p => p.num);
+    const minN = Math.min(...nums);
+    const maxN = Math.max(...nums);
+
+    // Determine display symbol from first parseable tier
+    const sym = parsed[0].sym;
+
+    // Format a number: drop trailing .00 for clean integers, keep decimals otherwise
+    function fmt(n) {
+      return n % 1 === 0 ? n.toLocaleString() : n.toFixed(2);
+    }
+
+    if (minN === maxN) {
+      // All tiers the same price — just show it
+      return sym + fmt(minN);
+    }
+    return sym + fmt(minN) + " – " + sym + fmt(maxN);
+  }
+
+  // ================================================================
   // FILTER LOGIC
   // ================================================================
   function getFiltered() {
@@ -1271,8 +1326,8 @@
         <td><span class="option-name">${esc(row.option_name)}</span></td>
         <td><span class="pill pill-type">${esc(row.display_type)}</span></td>
         <td>
-          <span class="cost-display">${esc(row.cost_display)}</span>
-          ${row.cost_display === 'Varies' ? '<br><span class="varies-hint">Click for more information</span>' : ''}
+          <span class="cost-display">${esc(costRange(row))}</span>
+          ${(row.tiers && row.tiers.length > 1) ? '<br><span class="varies-hint">Click for more information</span>' : ''}
         </td>
         <td><span class="cost-basis-text">${esc(row.cost_basis)}</span></td>
         <td><span class="pill grade-badge grade-${esc(row.grade)}">${esc(row.grade)}</span></td>
