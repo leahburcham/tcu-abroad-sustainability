@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <style>
-    /* ---- CSS custom properties ---- */
     :root {
       --tcu-purple: #4d1979;
       --tcu-purple-dark: #3b135d;
@@ -22,11 +21,7 @@
       --red: #d7263d;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -35,9 +30,7 @@
       line-height: 1.45;
     }
 
-    a {
-      color: var(--tcu-purple);
-    }
+    a { color: var(--tcu-purple); }
 
     /* ---- Header ---- */
     header {
@@ -45,116 +38,39 @@
       color: #fff;
       padding: 1.6rem 1.25rem 1.4rem;
     }
-
-    .header-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
+    .header-inner { max-width: 1400px; margin: 0 auto; }
     header h1 {
       font-size: clamp(1.7rem, 2vw, 2.35rem);
       font-weight: 700;
       margin-bottom: 0.45rem;
     }
+    header p { max-width: 980px; font-size: 0.98rem; opacity: 0.96; }
 
-    header p {
-      max-width: 980px;
-      font-size: 0.98rem;
-      opacity: 0.96;
-    }
-
-    /* ---- Main layout ---- */
-    main {
-      max-width: 1400px;
-      margin: 1.35rem auto 3rem;
-      padding: 0 1.25rem;
-    }
+    /* ---- Main ---- */
+    main { max-width: 1400px; margin: 1.35rem auto 3rem; padding: 0 1.25rem; }
 
     /* ---- Shared card base ---- */
-    .filters-card,
-    .table-card,
-    .intro-card {
+    .filters-card, .table-card, .intro-card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       box-shadow: var(--shadow);
     }
 
-    /* ---- Educational intro section ---- */
-    .intro-card {
-      padding: 1.4rem 1.5rem 1.5rem;
-      margin-bottom: 1rem;
-    }
+    /* ---- Intro ---- */
+    .intro-card { padding: 1.4rem 1.5rem 1.5rem; margin-bottom: 1rem; }
+    .intro-card h2 { font-size: 1.15rem; color: var(--tcu-purple); margin-bottom: 0.65rem; font-weight: 700; }
+    .intro-lead { font-size: 0.96rem; color: var(--text); max-width: 980px; line-height: 1.6; }
+    .intro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 0.9rem; }
+    .intro-block { background: #faf9fd; border: 1px solid #ece7f7; border-radius: 12px; padding: 0.95rem 1rem; }
+    .intro-block h3 { font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tcu-purple); margin-bottom: 0.4rem; }
+    .intro-block p { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
 
-    .intro-card h2 {
-      font-size: 1.15rem;
-      color: var(--tcu-purple);
-      margin-bottom: 0.65rem;
-      font-weight: 700;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 0.9rem;
-    }
-
-    .intro-block {
-      background: #faf9fd;
-      border: 1px solid #ece7f7;
-      border-radius: 12px;
-      padding: 0.95rem 1rem;
-    }
-
-    .intro-block h3 {
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--tcu-purple);
-      margin-bottom: 0.4rem;
-    }
-
-    .intro-block p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .intro-lead {
-      font-size: 0.96rem;
-      color: var(--text);
-      max-width: 980px;
-      line-height: 1.6;
-    }
-
-    /* ---- Filters card ---- */
-    .filters-card {
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .filters-topline {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 0.85rem;
-      flex-wrap: wrap;
-    }
-
-    .filters-topline h2 {
-      font-size: 1.05rem;
-      color: var(--tcu-purple);
-      margin-bottom: 0.2rem;
-    }
-
-    .filters-topline p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      max-width: 880px;
-    }
+    /* ---- Filters ---- */
+    .filters-card { padding: 1rem; margin-bottom: 1rem; }
+    .filters-topline { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.85rem; flex-wrap: wrap; }
+    .filters-topline h2 { font-size: 1.05rem; color: var(--tcu-purple); margin-bottom: 0.2rem; }
+    .filters-topline p { font-size: 0.88rem; color: var(--muted); max-width: 880px; }
 
     .filters-grid {
       display: grid;
@@ -162,21 +78,8 @@
       gap: 0.85rem;
       align-items: end;
     }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .filter-group label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
+    .filter-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .filter-group label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 700; }
     .filter-group select {
       border: 1px solid #cfd3db;
       border-radius: 10px;
@@ -186,1881 +89,1223 @@
       color: var(--text);
       cursor: pointer;
     }
-
     .filter-group .helper-link {
-      margin-top: 0.05rem;
-      font-size: 0.78rem;
-      color: var(--tcu-purple);
-      background: none;
-      border: none;
-      text-align: left;
-      cursor: pointer;
-      text-decoration: underline;
-      padding: 0;
-      width: fit-content;
+      font-size: 0.78rem; color: var(--tcu-purple); background: none; border: none;
+      text-align: left; cursor: pointer; text-decoration: underline; padding: 0; width: fit-content;
     }
-
-    .filter-actions {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      height: 100%;
-    }
-
+    .filter-actions { display: flex; justify-content: flex-end; align-items: center; height: 100%; }
     .reset-btn {
-      border: none;
-      background: transparent;
-      color: var(--tcu-purple);
-      font-size: 0.86rem;
-      cursor: pointer;
-      text-decoration: underline;
-      padding: 0.5rem 0.2rem;
-      white-space: nowrap;
+      border: none; background: transparent; color: var(--tcu-purple);
+      font-size: 0.86rem; cursor: pointer; text-decoration: underline;
+      padding: 0.5rem 0.2rem; white-space: nowrap;
     }
 
-    /* ---- Table card ---- */
+    /* ---- Summary row ---- */
     .summary-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 0.95rem 1rem 0;
-      font-size: 0.9rem;
-      color: var(--muted);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; flex-wrap: wrap; padding: 0.95rem 1rem 0;
+      font-size: 0.9rem; color: var(--muted);
     }
+    .summary-row strong { color: var(--text); }
+    .cost-note { font-size: 0.82rem; color: var(--muted); }
 
-    .summary-row strong {
-      color: var(--text);
-    }
+    /* ---- Table ---- */
+    .table-card { overflow: hidden; }
+    .table-wrap { overflow-x: auto; width: 100%; }
 
-    .cost-note {
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    .table-card {
-      overflow: hidden;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      width: 100%;
-    }
-
-    table {
-      width: 100%;
-      min-width: 900px;
-      border-collapse: collapse;
-    }
+    table { width: 100%; min-width: 700px; border-collapse: collapse; }
 
     thead th {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      background: #f8f7fb;
-      color: var(--text);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      text-align: left;
-      padding: 0.85rem 0.8rem;
-      border-bottom: 1px solid var(--border);
-      vertical-align: bottom;
+      position: sticky; top: 0; z-index: 1;
+      background: #f8f7fb; color: var(--text);
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
+      text-align: left; padding: 0.85rem 0.8rem;
+      border-bottom: 1px solid var(--border); vertical-align: bottom;
     }
 
-    tbody td {
-      padding: 0.85rem 0.8rem;
-      border-bottom: 1px solid #ececf2;
-      vertical-align: top;
-      font-size: 0.9rem;
-    }
+    tbody td { padding: 0.85rem 0.8rem; border-bottom: 1px solid #ececf2; vertical-align: top; font-size: 0.9rem; }
+    tbody tr { transition: background 0.12s ease; cursor: pointer; }
+    tbody tr:hover { background: #faf9fd; }
+    tbody tr:last-child td { border-bottom: none; }
 
-    tbody tr {
-      transition: background 0.12s ease;
-      cursor: pointer;
-    }
+    .location-name { font-weight: 700; color: var(--text); }
+    .option-name { font-weight: 600; color: var(--text); }
+    .cost-display { font-weight: 700; color: var(--text); white-space: nowrap; }
+    .cost-basis-text { font-size: 0.82rem; color: var(--muted); }
 
-    tbody tr:hover {
-      background: #faf9fd;
-    }
-
-    tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* ---- Pill / badge components ---- */
+    /* ---- Pills ---- */
     .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 0.2rem 0.6rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 999px; padding: 0.22rem 0.65rem;
+      font-size: 0.75rem; font-weight: 700; white-space: nowrap;
       border: 1px solid transparent;
-      margin-bottom: 0.28rem;
     }
+    .pill-type { background: #f2f0f8; color: var(--tcu-purple); border-color: #e2dbf1; text-transform: capitalize; }
 
-    .pill-category {
-      background: #f2f0f8;
-      color: var(--tcu-purple);
-      border-color: #e2dbf1;
-      text-transform: capitalize;
-    }
-
-    .pill-cost {
-      background: #eef5ff;
-      color: #1458a8;
-      border-color: #d5e4fb;
-    }
-
-    .grade-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 0.22rem;
-      align-items: flex-start;
-    }
-
-    .grade-badge {
-      color: #fff;
-    }
-
+    .grade-badge { color: #fff; }
     .grade-A { background: var(--green); }
     .grade-B { background: var(--blue); }
     .grade-C { background: var(--amber); }
-    .grade-D { background: var(--red); }
-    .grade-Unknown { background: #888; }
+    .grade-Unknown { background: #999; }
 
     .tiny-link {
-      font-size: 0.76rem;
-      color: var(--tcu-purple);
-      background: none;
-      border: none;
-      text-decoration: underline;
-      cursor: pointer;
-      padding: 0;
+      font-size: 0.76rem; color: var(--tcu-purple); background: none; border: none;
+      text-decoration: underline; cursor: pointer; padding: 0;
     }
 
-    .meta-text {
-      font-size: 0.85rem;
-      color: var(--muted);
-      max-width: 250px;
-    }
+    .empty-state { padding: 1.4rem 1rem; font-size: 0.92rem; color: var(--muted); display: none; }
 
-    .location-cell .location-name {
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.15rem;
-    }
-
-    .cost-cell {
-      white-space: nowrap;
-    }
-    .cost-value {
-      font-weight: 700;
-      color: var(--text);
-    }
-    .cost-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .notes-cell {
-      font-size: 0.84rem;
-      color: var(--muted);
-      max-width: 280px;
-    }
-
-    .official-link {
-      display: inline-block;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--tcu-purple);
-      text-decoration: none;
-    }
-
-    .official-link:hover {
-      text-decoration: underline;
-    }
-
-    .empty-state {
-      padding: 1.4rem 1rem;
-      font-size: 0.92rem;
-      color: var(--muted);
-      display: none;
-    }
-
-    /* ---- Detail modal ---- */
+    /* ---- Modals ---- */
     .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(13, 15, 22, 0.55);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      z-index: 50;
+      position: fixed; inset: 0; background: rgba(13, 15, 22, 0.55);
+      display: none; align-items: center; justify-content: center;
+      padding: 1rem; z-index: 50;
     }
-
     .modal {
-      width: min(920px, 100%);
-      max-height: 92vh;
-      overflow: hidden;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
-      display: flex;
-      flex-direction: column;
+      width: min(860px, 100%); max-height: 92vh; overflow: hidden;
+      background: #fff; border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.28);
+      display: flex; flex-direction: column;
     }
-
-    .modal.small {
-      width: min(700px, 100%);
-    }
+    .modal.small { width: min(680px, 100%); }
 
     .modal-header {
-      padding: 1rem 1.1rem 0.9rem;
+      padding: 1.1rem 1.25rem 1rem;
       border-bottom: 1px solid #ececf2;
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: flex-start;
+      display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start;
     }
-
-    .modal-header h3 {
-      font-size: 1.15rem;
-      color: var(--text);
-      margin-bottom: 0.18rem;
-    }
-
-    .modal-header p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+    .modal-header h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 0.15rem; }
+    .modal-header .modal-subtitle { font-size: 0.9rem; color: var(--muted); }
 
     .close-btn {
-      border: none;
-      background: transparent;
-      font-size: 1.5rem;
-      line-height: 1;
-      color: #666;
-      cursor: pointer;
-      padding: 0.1rem 0.25rem;
+      border: none; background: transparent; font-size: 1.5rem;
+      line-height: 1; color: #666; cursor: pointer; padding: 0.1rem 0.25rem;
+      flex-shrink: 0;
     }
 
-    .modal-body {
-      padding: 1rem 1.1rem 1.1rem;
-      overflow-y: auto;
+    .modal-body { padding: 1.1rem 1.25rem 1.25rem; overflow-y: auto; }
+
+    .detail-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+
+    /* description block */
+    .detail-description {
+      font-size: 0.97rem; color: var(--text); line-height: 1.6;
+      margin-bottom: 1.1rem;
+      background: #faf9fd; border: 1px solid #ece7f7;
+      border-radius: 12px; padding: 0.95rem 1rem;
     }
 
-    .detail-badges {
-      display: flex;
-      gap: 0.45rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.75rem;
-    }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.85rem; }
 
-    .detail-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.8rem;
-    }
-
-    .detail-card {
-      background: #faf9fd;
-      border: 1px solid #ece7f7;
-      border-radius: 14px;
-      padding: 0.85rem;
-    }
-
+    .detail-card { background: #faf9fd; border: 1px solid #ece7f7; border-radius: 14px; padding: 0.9rem 1rem; }
     .detail-card h4 {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
+      font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--muted); margin-bottom: 0.4rem;
     }
+    .detail-card p { font-size: 0.91rem; color: var(--text); line-height: 1.55; }
+    .detail-card.full { grid-column: span 2; }
 
-    .detail-card p {
-      font-size: 0.9rem;
-      color: var(--text);
+    /* cost tiers table inside modal */
+    .tiers-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.4rem; }
+    .tiers-table th {
+      text-align: left; font-size: 0.74rem; text-transform: uppercase;
+      letter-spacing: 0.04em; color: var(--muted); padding: 0.3rem 0.5rem 0.4rem;
+      border-bottom: 1px solid #ececf2;
     }
+    .tiers-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid #f0eef8; color: var(--text); }
+    .tiers-table tr:last-child td { border-bottom: none; }
 
     .detail-footer {
-      padding: 0.95rem 1.1rem 1.1rem;
+      padding: 0.95rem 1.25rem 1.1rem;
       border-top: 1px solid #ececf2;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
     }
-
-    .detail-footer .note {
-      color: var(--muted);
-      font-size: 0.85rem;
-      max-width: 620px;
-    }
-
+    .detail-footer .note { color: var(--muted); font-size: 0.85rem; max-width: 580px; }
     .detail-footer a {
-      text-decoration: none;
-      color: #fff;
-      background: var(--tcu-purple);
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.88rem;
+      text-decoration: none; color: #fff; background: var(--tcu-purple);
+      padding: 0.65rem 1.1rem; border-radius: 999px; font-weight: 700; font-size: 0.88rem;
+      white-space: nowrap;
     }
-
-    .detail-footer a:hover {
-      background: var(--tcu-purple-dark);
-    }
+    .detail-footer a:hover { background: var(--tcu-purple-dark); }
 
     /* ---- Rubric modal ---- */
-    .rubric-list {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .rubric-item {
-      border: 1px solid #ececf2;
-      border-radius: 14px;
-      padding: 0.9rem;
-      background: #fafafa;
-    }
-
-    .rubric-item h4 {
-      margin-bottom: 0.35rem;
-      font-size: 0.95rem;
-    }
-
-    .rubric-item p {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+    .rubric-list { display: grid; gap: 0.75rem; }
+    .rubric-item { border: 1px solid #ececf2; border-radius: 14px; padding: 0.9rem; background: #fafafa; }
+    .rubric-item h4 { margin-bottom: 0.35rem; font-size: 0.95rem; }
+    .rubric-item p { font-size: 0.9rem; color: var(--muted); }
 
     /* ---- Responsive ---- */
     @media (max-width: 1080px) {
-      .filters-grid {
-        grid-template-columns: repeat(2, minmax(180px, 1fr));
-      }
-      .filter-actions {
-        justify-content: flex-start;
-      }
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
+      .filters-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+      .filter-actions { justify-content: flex-start; }
+      .intro-grid { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 760px) {
-      .detail-grid {
-        grid-template-columns: 1fr;
-      }
-      header {
-        padding-top: 1.35rem;
-      }
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
+      .detail-grid { grid-template-columns: 1fr; }
+      .detail-card.full { grid-column: span 1; }
+      header { padding-top: 1.35rem; }
+      .intro-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-inner">
-      <h1>Sustainable Travel Abroad</h1>
-      <p>
-        Explore student-friendly, lower-emission transportation options in TCU semester program cities.
-        Filter by location, type, cost level, and sustainability grade to find the best ways to get around
-        — and why choosing public transit, bike share, and rail over ride-hailing matters.
-      </p>
+
+<header>
+  <div class="header-inner">
+    <h1>Sustainable Travel Abroad</h1>
+    <p>
+      Explore student-friendly, lower-emission transportation options in TCU semester program cities.
+      Filter by location, type, cost level, or sustainability grade — and click any row for details
+      on how to access or purchase each option.
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== Educational intro ===== -->
+  <section class="intro-card" aria-label="Why sustainable transportation matters">
+    <h2>Why Sustainable Transportation Matters Abroad</h2>
+    <p class="intro-lead">
+      Transportation is one of the largest contributors to greenhouse gas emissions worldwide — and
+      the choices you make while studying abroad add up. Understanding your options helps you reduce
+      your environmental footprint while often saving money and experiencing the city the way locals do.
+    </p>
+    <div class="intro-grid">
+      <div class="intro-block">
+        <h3>Environmental impact of transport emissions</h3>
+        <p>
+          Transportation accounts for roughly <strong>23% of global CO₂ emissions</strong> from energy use.
+          A single ride-hail trip can emit 50–70% more carbon per passenger-mile than the equivalent
+          bus or metro journey. Across a full semester, those choices compound significantly.
+        </p>
+      </div>
+      <div class="intro-block">
+        <h3>Public transit, bike share &amp; rail vs. ride-hail</h3>
+        <p>
+          Metro, tram, and regional rail systems move hundreds of passengers per trip with minimal
+          per-person emissions. Bike share adds zero direct emissions for short trips.
+          Ride-hail options like Uber typically carry 1–2 people per combustion vehicle,
+          making per-person emissions 3–5× higher than equivalent rail or bus travel.
+        </p>
+      </div>
+      <div class="intro-block">
+        <h3>How to use this table</h3>
+        <p>
+          Each row is a transit option at a study abroad location. Click any row for a full
+          description and instructions on how to buy or access it. Use the filters to narrow
+          by city, type, cost level, or sustainability grade. Grades A–C reflect emissions
+          efficiency — <strong>A is best</strong>.
+        </p>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-
-    <!-- ===== Educational intro ===== -->
-    <section class="intro-card" aria-label="Why sustainable transportation matters">
-      <h2>Why Sustainable Transportation Matters Abroad</h2>
-      <p class="intro-lead">
-        Transportation is one of the largest contributors to greenhouse gas emissions worldwide — and
-        the choices you make while studying abroad add up. Understanding your options helps you reduce
-        your environmental footprint while often saving money and experiencing the city the way locals do.
-      </p>
-      <div class="intro-grid">
-        <div class="intro-block">
-          <h3>Environmental impact of transport emissions</h3>
-          <p>
-            Transportation accounts for roughly <strong>23% of global CO₂ emissions</strong> from energy use.
-            A single ride-hail trip can emit 50–70% more carbon per passenger-mile than the equivalent
-            bus or metro journey. Across a full semester, those choices compound significantly.
-          </p>
-        </div>
-        <div class="intro-block">
-          <h3>Public transit, bike share &amp; rail vs. ride-hail</h3>
-          <p>
-            Metro, tram, and regional rail systems move hundreds of passengers per trip with minimal
-            per-person emissions. Bike share adds zero direct emissions for short trips.
-            Ride-hail options like Uber typically carry 1–2 people per combustion vehicle,
-            making per-person emissions 3–5× higher than equivalent rail or bus travel.
-          </p>
-        </div>
-        <div class="intro-block">
-          <h3>How to use this table</h3>
-          <p>
-            Each row represents a specific ticketing option or pass at a study abroad location.
-            Use the filters below to narrow by city, transport type, cost level, or sustainability grade.
-            Click any row for the full details. Grades A–C reflect how efficiently each option moves
-            people relative to emissions — <strong>A is best</strong>.
-          </p>
-        </div>
+  <!-- ===== Filters ===== -->
+  <section class="filters-card" aria-label="Filters">
+    <div class="filters-topline">
+      <div>
+        <h2>Filters</h2>
+        <p>Narrow options by location, transportation type, cost level, or sustainability grade.</p>
       </div>
-    </section>
-
-    <!-- ===== Filters ===== -->
-    <section class="filters-card" aria-label="Filters">
-      <div class="filters-topline">
-        <div>
-          <h2>Filters</h2>
-          <p>
-            Use the filters to narrow transportation choices by location, type, cost, or sustainability.
-            Cost levels are derived from each option's listed price; see the full row for local currency and basis.
-          </p>
-        </div>
+    </div>
+    <div class="filters-grid">
+      <div class="filter-group">
+        <label for="locationFilter">Location</label>
+        <select id="locationFilter">
+          <option value="all">All locations</option>
+        </select>
       </div>
 
-      <div class="filters-grid">
-        <div class="filter-group">
-          <label for="locationFilter">Location</label>
-          <select id="locationFilter">
-            <option value="all">All locations</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="typeFilter">Transportation type</label>
-          <select id="typeFilter">
-            <option value="all">All types</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="costFilter">Cost level</label>
-          <select id="costFilter">
-            <option value="all">All cost levels</option>
-            <option value="Free">Free</option>
-            <option value="Low">Low (up to 10)</option>
-            <option value="Medium">Medium (11–40)</option>
-            <option value="High">High (41+)</option>
-            <option value="Unknown">Unknown</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="gradeFilter">Sustainability grade</label>
-          <select id="gradeFilter">
-            <option value="all">All grades</option>
-            <option value="A">A – Bike, rail, metro, tram</option>
-            <option value="B">B – Bus, shuttle, mixed transit</option>
-            <option value="C">C – Airport transport &amp; other</option>
-            <option value="Unknown">Unknown</option>
-          </select>
-          <button id="openRubricBtn" class="helper-link" type="button">How is sustainability graded?</button>
-        </div>
-
-        <div class="filter-actions">
-          <button id="resetFilters" class="reset-btn" type="button">Reset filters</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Results table ===== -->
-    <section class="table-card">
-      <div class="summary-row">
-        <p id="summaryText"><strong>Loading…</strong></p>
-        <p class="cost-note">Cost levels are rough comparison bands; see each row for local currency and basis details.</p>
+      <div class="filter-group">
+        <label for="typeFilter">Transportation type</label>
+        <select id="typeFilter">
+          <option value="all">All types</option>
+          <option value="Public Transit">Public Transit</option>
+          <option value="Bike Share">Bike Share</option>
+          <option value="Airport Transport">Airport Transport</option>
+          <option value="Student Pass / Discount">Student Pass / Discount</option>
+          <option value="Rail Pass">Rail Pass</option>
+        </select>
       </div>
 
-      <div class="table-wrap">
-        <table aria-label="Transportation options table">
-          <thead>
-            <tr>
-              <th>Location</th>
-              <th>Transportation type</th>
-              <th>Option name</th>
-              <th>Cost</th>
-              <th>Cost basis</th>
-              <th>Cost level</th>
-              <th>
-                Sustainability grade
-                <br /><button class="tiny-link" type="button" id="openRubricBtnHeader">How graded?</button>
-              </th>
-              <th>Notes</th>
-              <th>Source</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
+      <div class="filter-group">
+        <label for="costFilter">Cost level</label>
+        <select id="costFilter">
+          <option value="all">All cost levels</option>
+          <option value="Free">Free ($0)</option>
+          <option value="Low">Low (under $11)</option>
+          <option value="Medium">Medium ($11–$40)</option>
+          <option value="High">High (over $40)</option>
+          <option value="Unknown">Unknown / Varies</option>
+        </select>
       </div>
 
-      <div id="noResults" class="empty-state">
-        No transportation options match these filters right now. Try changing the location, type, cost level, or sustainability grade.
+      <div class="filter-group">
+        <label for="gradeFilter">Sustainability grade</label>
+        <select id="gradeFilter">
+          <option value="all">All grades</option>
+          <option value="A">A – Bike share, rail, metro, tram</option>
+          <option value="B">B – Bus, shuttle, mixed transit</option>
+          <option value="C">C – Airport transport &amp; other</option>
+          <option value="Unknown">Unknown</option>
+        </select>
+        <button id="openRubricBtn" class="helper-link" type="button">How is sustainability graded?</button>
       </div>
-    </section>
 
-  </main>
+      <div class="filter-actions">
+        <button id="resetFilters" class="reset-btn" type="button">Reset filters</button>
+      </div>
+    </div>
+  </section>
 
-  <!-- ===== Detail modal ===== -->
-  <div class="modal-backdrop" id="detailBackdrop" aria-hidden="true">
-    <article class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
-      <div class="modal-header">
-        <div>
-          <h3 id="detailTitle"></h3>
-          <p id="detailSubtitle"></p>
+  <!-- ===== Results table ===== -->
+  <section class="table-card">
+    <div class="summary-row">
+      <p id="summaryText"><strong>Loading…</strong></p>
+      <p class="cost-note">Click any row for a description and instructions on how to buy or access the option.</p>
+    </div>
+    <div class="table-wrap">
+      <table aria-label="Transportation options table">
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Option</th>
+            <th>Transportation Type</th>
+            <th>Cost</th>
+            <th>Cost Basis</th>
+            <th>
+              Sustainability Grade
+              <br /><button class="tiny-link" id="openRubricBtnHeader" type="button">How graded?</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div id="noResults" class="empty-state">
+      No options match these filters. Try adjusting the location, type, cost level, or sustainability grade.
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Detail modal ===== -->
+<div class="modal-backdrop" id="detailBackdrop" aria-hidden="true">
+  <article class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal-header">
+      <div>
+        <h3 id="detailTitle"></h3>
+        <p class="modal-subtitle" id="detailSubtitle"></p>
+      </div>
+      <button class="close-btn" id="detailCloseBtn" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="detail-badges">
+        <span id="detailTypeLabel" class="pill pill-type"></span>
+        <span id="detailGrade" class="pill grade-badge"></span>
+      </div>
+
+      <!-- Description + how to access -->
+      <div class="detail-description" id="detailDescription"></div>
+
+      <div class="detail-grid">
+        <div class="detail-card" id="detailCostCard">
+          <h4>Cost</h4>
+          <div id="detailCostContent"></div>
         </div>
-        <button class="close-btn" id="detailCloseBtn" aria-label="Close details">&times;</button>
-      </div>
-
-      <div class="modal-body">
-        <div class="detail-badges">
-          <span id="detailTypeLabel" class="pill pill-category"></span>
-          <span id="detailCostLabel" class="pill pill-cost"></span>
-          <span id="detailGrade" class="pill grade-badge"></span>
-        </div>
-
-        <div class="detail-grid">
-          <div class="detail-card">
-            <h4>Cost</h4>
-            <p id="detailCostValue"></p>
-          </div>
-          <div class="detail-card">
-            <h4>Cost basis</h4>
-            <p id="detailCostBasis"></p>
-          </div>
-          <div class="detail-card" style="grid-column: span 2;">
-            <h4>Notes</h4>
-            <p id="detailNotes"></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="detail-footer">
-        <div class="note" id="detailFooterNote"></div>
-        <a id="detailLink" href="#" target="_blank" rel="noopener noreferrer">View source</a>
-      </div>
-    </article>
-  </div>
-
-  <!-- ===== Sustainability rubric modal ===== -->
-  <div class="modal-backdrop" id="rubricBackdrop" aria-hidden="true">
-    <article class="modal small" role="dialog" aria-modal="true" aria-labelledby="rubricTitle">
-      <div class="modal-header">
-        <div>
-          <h3 id="rubricTitle">How sustainability is graded</h3>
-          <p>A quick comparison rubric for students choosing lower-emission ways to get around.</p>
-        </div>
-        <button class="close-btn" id="rubricCloseBtn" aria-label="Close rubric">&times;</button>
-      </div>
-
-      <div class="modal-body">
-        <div class="rubric-list">
-          <div class="rubric-item">
-            <h4><span class="pill grade-badge grade-A">Grade A</span></h4>
-            <p>Very low direct emissions or zero-emission shared travel. Applies to: <strong>bike share, metro, tram, rail</strong>. Electric and human-powered modes at high ridership.</p>
-          </div>
-          <div class="rubric-item">
-            <h4><span class="pill grade-badge grade-B">Grade B</span></h4>
-            <p>Lower-emission shared travel, but not as efficient as top-grade electric or bike options. Applies to: <strong>bus, shuttle, mixed public transit</strong>. Often diesel-powered but high-occupancy.</p>
-          </div>
-          <div class="rubric-item">
-            <h4><span class="pill grade-badge grade-C">Grade C</span></h4>
-            <p>Shared transport with higher per-person emissions or less consistent occupancy. Applies to: <strong>airport transport, road coaches, campus shuttles</strong> and other options not clearly in A or B.</p>
-          </div>
-          <div class="rubric-item">
-            <h4><span class="pill grade-badge grade-Unknown">Unknown</span></h4>
-            <p>Insufficient information to assign a grade (e.g. discount cards, eligibility passes, or options without a clearly graded transport mode).</p>
-          </div>
+        <div class="detail-card">
+          <h4>How to access or buy</h4>
+          <p id="detailAccess"></p>
         </div>
       </div>
-    </article>
-  </div>
+    </div>
 
-  <script>
-    // =========================================================
-    // DATA
-    // To add more entries: append a new object to the array below.
-    // Required fields: location, transportation_type, option_name
-    // Optional (handle null gracefully): cost_value, cost_currency,
-    //   cost_basis, notes, source_url
-    // =========================================================
-    const transportData = [
-      // ---- Athens, Greece ----
-      {
-        location: "Athens, Greece (American College of Greece)",
-        transportation_type: "metro/bus/tram/suburban rail",
-        option_name: "90-minute single ticket",
-        cost_value: 1.20,
-        cost_currency: "EUR",
-        cost_basis: "per 90 minutes",
-        notes: "Valid on buses, trolley-buses, trams, metro lines 1/2/3 to Koropi, and suburban rail on covered section; airport not included.",
-        source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
-      },
-      {
-        location: "Athens, Greece (American College of Greece)",
-        transportation_type: "metro/bus/tram/suburban rail",
-        option_name: "Daily ticket",
-        cost_value: 4.10,
-        cost_currency: "EUR",
-        cost_basis: "24 hours",
-        notes: "Unlimited travel for 24 hours; excludes airport express lines and metro airport section.",
-        source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
-      },
-      {
-        location: "Athens, Greece (American College of Greece)",
-        transportation_type: "metro/bus/tram/suburban rail",
-        option_name: "5-day ticket",
-        cost_value: 8.20,
-        cost_currency: "EUR",
-        cost_basis: "5 days",
-        notes: "Unlimited travel for 5×24 hours; excludes airport express lines and metro airport section.",
-        source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
-      },
-      {
-        location: "Athens, Greece (American College of Greece)",
-        transportation_type: "airport transport",
-        option_name: "Airport express bus lines",
-        cost_value: 5.50,
-        cost_currency: "EUR",
-        cost_basis: "one way",
-        notes: "Official OASA price for express bus lines serving the airport.",
-        source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
-      },
-      {
-        location: "Athens, Greece (American College of Greece)",
-        transportation_type: "airport transport",
-        option_name: "Metro airport ticket",
-        cost_value: 9.00,
-        cost_currency: "EUR",
-        cost_basis: "one way",
-        notes: "Official OASA price for airport metro single journey.",
-        source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
-      },
-      {
-        location: "Athens, Greece (American College of Greece)",
-        transportation_type: "airport transport",
-        option_name: "Metro airport round trip",
-        cost_value: 16.00,
-        cost_currency: "EUR",
-        cost_basis: "round trip",
-        notes: "Official OASA price for airport metro round trip.",
-        source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
-      },
+    <div class="detail-footer">
+      <p class="note" id="detailNote"></p>
+      <a id="detailLink" href="#" target="_blank" rel="noopener noreferrer">Official source ↗</a>
+    </div>
+  </article>
+</div>
 
-      // ---- Dublin, Ireland ----
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "TFI Leap short fare – adult",
-        cost_value: 1.50,
-        cost_currency: "EUR",
-        cost_basis: "per ride",
-        notes: "Dublin Zone 1 Leap fare.",
-        source_url: "https://www.transportforireland.ie/fares/bus-fares/"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "TFI Leap short fare – young adult/student",
-        cost_value: 0.75,
-        cost_currency: "EUR",
-        cost_basis: "per ride",
-        notes: "Dublin Zone 1 Leap fare for young adult/student.",
-        source_url: "https://www.transportforireland.ie/fares/bus-fares/"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "TFI 90-minute fare – adult",
-        cost_value: 2.00,
-        cost_currency: "EUR",
-        cost_basis: "per 90 minutes",
-        notes: "Leap card fare.",
-        source_url: "https://www.transportforireland.ie/fares/bus-fares/"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "TFI 90-minute fare – young adult/student",
-        cost_value: 1.00,
-        cost_currency: "EUR",
-        cost_basis: "per 90 minutes",
-        notes: "Leap card fare.",
-        source_url: "https://www.transportforireland.ie/fares/bus-fares/"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "Young adult/student daily cap",
-        cost_value: 3.00,
-        cost_currency: "EUR",
-        cost_basis: "per day",
-        notes: "Zone 1 TFI Dublin daily cap.",
-        source_url: "https://www.transportforireland.ie/fares/bus-fares/"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "Young adult/student weekly cap",
-        cost_value: 12.00,
-        cost_currency: "EUR",
-        cost_basis: "per week",
-        notes: "Zone 1 TFI Dublin weekly cap.",
-        source_url: "https://www.transportforireland.ie/fares/bus-fares/"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "Leap Visitor Card – 1 day",
-        cost_value: 8.00,
-        cost_currency: "EUR",
-        cost_basis: "24 hours",
-        notes: "Unlimited travel on Dublin Bus, Go-Ahead Dublin City, Luas, DART, and Commuter Rail in Dublin.",
-        source_url: "https://about.leapcard.ie/leap-visitor-card"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "Leap Visitor Card – 3 days",
-        cost_value: 18.00,
-        cost_currency: "EUR",
-        cost_basis: "72 hours",
-        notes: "Unlimited travel.",
-        source_url: "https://about.leapcard.ie/leap-visitor-card"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bus/tram/rail",
-        option_name: "Leap Visitor Card – 7 days",
-        cost_value: 24.00,
-        cost_currency: "EUR",
-        cost_basis: "168 hours",
-        notes: "Unlimited travel.",
-        source_url: "https://about.leapcard.ie/leap-visitor-card"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "bike share",
-        option_name: "Dublinbikes annual subscription",
-        cost_value: 35.00,
-        cost_currency: "EUR",
-        cost_basis: "per year",
-        notes: "Official Dublinbikes pricing.",
-        source_url: "https://www.dublinbikes.ie/en/offers/groups"
-      },
-      {
-        location: "Dublin, Ireland (University College Dublin)",
-        transportation_type: "student fare card",
-        option_name: "Student TFI Leap Card",
-        cost_value: null,
-        cost_currency: "EUR",
-        cost_basis: "eligibility product",
-        notes: "Available to full-time students aged 16–18 or 26+; ages 19–25 use Young Adult Leap Card. Eligibility flag rather than a flat-price item.",
-        source_url: "https://about.leapcard.ie/young-adult-and-student-card-launch"
-      },
+<!-- ===== Rubric modal ===== -->
+<div class="modal-backdrop" id="rubricBackdrop" aria-hidden="true">
+  <article class="modal small" role="dialog" aria-modal="true" aria-labelledby="rubricTitle">
+    <div class="modal-header">
+      <div>
+        <h3 id="rubricTitle">How sustainability is graded</h3>
+        <p class="modal-subtitle">A quick comparison rubric for choosing lower-emission travel.</p>
+      </div>
+      <button class="close-btn" id="rubricCloseBtn" aria-label="Close rubric">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="rubric-list">
+        <div class="rubric-item">
+          <h4><span class="pill grade-badge grade-A">Grade A</span></h4>
+          <p>Very low or zero direct emissions. Applies to: <strong>bike share, metro, tram, rail</strong>. Electric and human-powered modes at high ridership.</p>
+        </div>
+        <div class="rubric-item">
+          <h4><span class="pill grade-badge grade-B">Grade B</span></h4>
+          <p>Lower-emission shared travel. Applies to: <strong>bus, campus shuttle, mixed public transit</strong>. Often diesel-powered but high-occupancy reduces per-person impact.</p>
+        </div>
+        <div class="rubric-item">
+          <h4><span class="pill grade-badge grade-C">Grade C</span></h4>
+          <p>Higher per-person emissions or inconsistent occupancy. Applies to: <strong>airport transport, road coaches</strong>. Still better than solo taxis or ride-hail.</p>
+        </div>
+        <div class="rubric-item">
+          <h4><span class="pill grade-badge grade-Unknown">Unknown</span></h4>
+          <p>Insufficient information to assign a grade — applies to discount cards and eligibility passes where the transport mode isn't fixed.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
 
-      // ---- Hirakata, Japan ----
-      {
-        location: "Hirakata, Japan (Kansai Gaidai University)",
-        transportation_type: "campus bus",
-        option_name: "Keihan bus – Hirakata-shi Station to campuses",
-        cost_value: null,
-        cost_currency: "JPY",
-        cost_basis: "fare not surfaced",
-        notes: "Official Kansai Gaidai access page confirms bus service from Hirakata-shi Station to Gotenyama and Nakamiya campuses, but no flat fare was stated.",
-        source_url: "https://www.kansaigaidai.ac.jp/en/access/"
-      },
-      {
-        location: "Hirakata, Japan (Kansai Gaidai University)",
-        transportation_type: "airport transport",
-        option_name: "KIX limousine bus to Hirakata city",
-        cost_value: null,
-        cost_currency: "JPY",
-        cost_basis: "fare linked externally",
-        notes: "Official Kansai Gaidai access page links to operator timetable/fares; fare not surfaced in the accessible page.",
-        source_url: "https://www.kansaigaidai.ac.jp/en/access/"
-      },
-      {
-        location: "Hirakata, Japan (Kansai Gaidai University)",
-        transportation_type: "rail pass",
-        option_name: "Keihan Kyoto-Osaka Sightseeing Pass",
-        cost_value: 1650,
-        cost_currency: "JPY",
-        cost_basis: "1 day",
-        notes: "1-day pass; useful as a rail pass option on the Keihan line.",
-        source_url: "https://www.keihan.co.jp/travel/en/pdf/useful-files/keihan_guide.pdf"
-      },
+<script>
+  // ================================================================
+  // CONSOLIDATED TRANSPORT DATA
+  //
+  // Each entry represents one ROW in the table.
+  // Fields:
+  //   location        — city/program label
+  //   display_type    — one of 5 categories shown in the Type column
+  //   option_name     — shown in the Option column
+  //   cost_display    — string shown in Cost column ("Free", "$1.20", "Varies", "—")
+  //   cost_basis      — string shown in Cost Basis column ("Varies" when multiple tiers)
+  //   cost_level      — "Free" | "Low" | "Medium" | "High" | "Unknown" (used for filter only)
+  //   grade           — "A" | "B" | "C" | "Unknown"
+  //   description     — paragraph explaining what this option is
+  //   how_to_access   — paragraph on how to buy / sign up / use it
+  //   tiers           — array of {label, cost} for multi-tier options (shown in modal)
+  //   note            — optional footnote shown in modal footer
+  //   source_url      — link to official page
+  //
+  // TO ADD A NEW ENTRY: append a new object below and save.
+  // ================================================================
+  const transportData = [
 
-      // ---- Paris, France ----
-      {
-        location: "Paris, France (Paris College of Art and Accent Study Center)",
-        transportation_type: "metro/RER/bus/tram",
-        option_name: "Navigo Monthly Pass",
-        cost_value: 84.40,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "Official Bonjour RATP price.",
-        source_url: "https://www.bonjour-ratp.fr/en/titres-tarifs/forfait-navigo-mois/"
-      },
-      {
-        location: "Paris, France (Paris College of Art and Accent Study Center)",
-        transportation_type: "transit card",
-        option_name: "Navigo Easy pass",
-        cost_value: 2.00,
-        cost_currency: "EUR",
-        cost_basis: "one-time card fee",
-        notes: "Non-nominative pass support.",
-        source_url: "https://www.bonjour-ratp.fr/en/titres-tarifs/"
-      },
-      {
-        location: "Paris, France (Paris College of Art and Accent Study Center)",
-        transportation_type: "transit card",
-        option_name: "Navigo Découverte pass",
-        cost_value: 5.00,
-        cost_currency: "EUR",
-        cost_basis: "one-time card fee",
-        notes: "Accessible to all; nominal fee for the pass card.",
-        source_url: "https://www.bonjour-ratp.fr/en/titres-tarifs/"
-      },
-      {
-        location: "Paris, France (Paris College of Art and Accent Study Center)",
-        transportation_type: "bike share",
-        option_name: "Vélib' V-Libre",
-        cost_value: 0.00,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "Registration fee €6. Occasional-use plan.",
-        source_url: "https://www.velib-metropole.fr/en/offers"
-      },
-      {
-        location: "Paris, France (Paris College of Art and Accent Study Center)",
-        transportation_type: "bike share",
-        option_name: "Vélib' V-Plus",
-        cost_value: 4.30,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "12-month subscription. Includes 30 minutes on classic bikes.",
-        source_url: "https://www.velib-metropole.fr/en/offers"
-      },
-      {
-        location: "Paris, France (Paris College of Art and Accent Study Center)",
-        transportation_type: "bike share",
-        option_name: "Vélib' V-Max",
-        cost_value: 9.30,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "12-month subscription. Includes 60 minutes on classic bikes and preferential e-bike rates.",
-        source_url: "https://www.velib-metropole.fr/en/offers"
-      },
+    // ── ATHENS ─────────────────────────────────────────────────────
+    {
+      location: "Athens, Greece (American College of Greece)",
+      display_type: "Public Transit",
+      option_name: "Athens City Transit (ATH.ENA Card)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "A",
+      description: "The ATH.ENA reloadable smart card is your main tool for getting around Athens by metro, tram, bus, and trolleybus. You can load single 90-minute tickets, a 24-hour pass, or a 5-day pass depending on how long you need coverage. The card is accepted across the integrated Athens urban transit network.",
+      how_to_access: "Buy an ATH.ENA card and load your preferred ticket type at major metro stations (Syntagma, Monastiraki, Omonia) or at official ticket machines shortly after arrival. Card machines have English-language menus. Airport lines and the airport metro section require a separate airport ticket.",
+      tiers: [
+        { label: "90-minute single ticket", cost: "€1.20" },
+        { label: "24-hour pass",            cost: "€4.10" },
+        { label: "5-day pass",              cost: "€8.20" }
+      ],
+      note: "Airport express lines and the metro airport section are NOT included — buy a separate airport ticket for those trips.",
+      source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
+    },
+    {
+      location: "Athens, Greece (American College of Greece)",
+      display_type: "Airport Transport",
+      option_name: "Athens Airport Transport (Bus or Metro)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "C",
+      description: "Two convenient public options connect Athens International Airport (Eleftherios Venizelos) to the city center. Metro Line 3 runs directly to Syntagma and Monastiraki in about 40 minutes — reliable and fast. The X95 express bus runs 24/7 to Syntagma Square and is a good choice for late-night arrivals or if the metro schedule doesn't fit.",
+      how_to_access: "Follow signs in the arrivals hall for 'Metro' or 'Express Bus'. Airport metro tickets are sold at dedicated machines inside the airport — they are separate from the regular ATH.ENA card. For the X95 express bus, buy tickets at airport kiosks or on board. Both options accept card or cash.",
+      tiers: [
+        { label: "X95 express bus (one way)",      cost: "€5.50" },
+        { label: "Metro airport ticket (one way)",  cost: "€9.00" },
+        { label: "Metro airport round trip",        cost: "€16.00" }
+      ],
+      note: "Choose based on your housing location — the metro is faster to central stops; the X95 bus runs to Syntagma and continues 24 hours.",
+      source_url: "https://www.oasa.gr/en/tickets/prices-of-products/"
+    },
 
-      // ---- Prague, Czech Republic ----
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "30-minute ticket (app)",
-        cost_value: 36,
-        cost_currency: "CZK",
-        cost_basis: "per 30 minutes",
-        notes: "Prague basic fare.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "30-minute ticket (paper)",
-        cost_value: 39,
-        cost_currency: "CZK",
-        cost_basis: "per 30 minutes",
-        notes: "Prague basic fare.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "90-minute ticket (app)",
-        cost_value: 46,
-        cost_currency: "CZK",
-        cost_basis: "per 90 minutes",
-        notes: "Prague basic fare.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "90-minute ticket (paper)",
-        cost_value: 50,
-        cost_currency: "CZK",
-        cost_basis: "per 90 minutes",
-        notes: "Prague basic fare.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "24-hour ticket (app)",
-        cost_value: 140,
-        cost_currency: "CZK",
-        cost_basis: "24 hours",
-        notes: "Short-term pass.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "72-hour ticket (app)",
-        cost_value: 340,
-        cost_currency: "CZK",
-        cost_basis: "72 hours",
-        notes: "Short-term pass.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "Student monthly pass",
-        cost_value: 130,
-        cost_currency: "CZK",
-        cost_basis: "30 days",
-        notes: "Half-price subscription ticket for students aged 18–26 with valid study certificate.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "Student 3-month pass",
-        cost_value: 360,
-        cost_currency: "CZK",
-        cost_basis: "90 days",
-        notes: "Half-price subscription for students aged 18–26 with valid study certificate.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
-      {
-        location: "Prague, Czech Republic (Charles University)",
-        transportation_type: "metro/tram/bus",
-        option_name: "Student annual pass",
-        cost_value: 1280,
-        cost_currency: "CZK",
-        cost_basis: "365 days",
-        notes: "Half-price subscription for students aged 18–26 with valid study certificate.",
-        source_url: "https://pid.cz/en/tickets-and-fare/"
-      },
+    // ── DUBLIN ─────────────────────────────────────────────────────
+    {
+      location: "Dublin, Ireland (University College Dublin)",
+      display_type: "Public Transit",
+      option_name: "TFI Leap Card",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "B",
+      description: "The TFI Leap Card is Dublin's tap-on/tap-off transit card, covering Dublin Bus, Go-Ahead Dublin, Luas tram lines, DART rail, and commuter rail. It automatically applies the cheapest available fare and caps your daily and weekly spend — so you never overpay. Adult and young adult/student fares differ, and visitor day/multi-day cards are also available if you're only in Dublin briefly.",
+      how_to_access: "Buy a Leap Card at Dublin Airport, major bus/rail stations, or convenience stores (Spar, Centra, etc.) with a small card deposit. Top it up at machines, shops, or the TFI app. If you qualify as a full-time student aged 19–25, apply for a Young Adult Leap Card through TFI for automatic discounts. Students aged 26+ or 16–18 may qualify for a Student TFI Leap Card — check eligibility with your student ID.",
+      tiers: [
+        { label: "Short fare – adult (per ride)",                cost: "€1.50" },
+        { label: "Short fare – young adult/student (per ride)",  cost: "€0.75" },
+        { label: "90-min fare – adult",                          cost: "€2.00" },
+        { label: "90-min fare – young adult/student",            cost: "€1.00" },
+        { label: "Young adult/student daily cap",                cost: "€3.00" },
+        { label: "Young adult/student weekly cap",               cost: "€12.00" },
+        { label: "Leap Visitor Card – 1 day (unlimited)",        cost: "€8.00" },
+        { label: "Leap Visitor Card – 3 days (unlimited)",       cost: "€18.00" },
+        { label: "Leap Visitor Card – 7 days (unlimited)",       cost: "€24.00" }
+      ],
+      note: "For a full semester, getting the correct student or young adult card will save significant money compared to paying adult fares.",
+      source_url: "https://about.leapcard.ie"
+    },
+    {
+      location: "Dublin, Ireland (University College Dublin)",
+      display_type: "Bike Share",
+      option_name: "Dublinbikes",
+      cost_display: "€35 / year",
+      cost_basis: "Annual subscription",
+      cost_level: "Medium",
+      grade: "A",
+      description: "Dublinbikes is Dublin's public docked bike-share system with stations across the city center. It's best for short trips — the subscription gives you unlimited 30-minute journeys, and longer rides cost a small extra fee. It pairs well with the Leap Card for longer legs of your commute.",
+      how_to_access: "Sign up online at dublinbikes.ie or through the app. Choose the annual subscription (€35) for a full semester stay. Use the app to find available bikes and docking stations near you. The first 30 minutes of each journey are free with the subscription.",
+      tiers: [
+        { label: "Annual subscription", cost: "€35.00" }
+      ],
+      note: "Check the app for nearby docking station availability before heading out — stations near UCD and the city center fill up during peak hours.",
+      source_url: "https://www.dublinbikes.ie"
+    },
 
-      // ---- Stellenbosch, South Africa ----
-      {
-        location: "Stellenbosch, South Africa (Stellenbosch University)",
-        transportation_type: "campus shuttle",
-        option_name: "Stellenbosch day shuttle",
-        cost_value: 0,
-        cost_currency: "ZAR",
-        cost_basis: "no additional cost",
-        notes: "On-campus daytime shuttle; student or staff card required.",
-        source_url: "https://www0.sun.ac.za/sustainability/pages/services/transport/campus-shuttle-service.php"
-      },
-      {
-        location: "Stellenbosch, South Africa (Stellenbosch University)",
-        transportation_type: "campus shuttle",
-        option_name: "Stellenbosch evening shuttle",
-        cost_value: 0,
-        cost_currency: "ZAR",
-        cost_basis: "no additional cost",
-        notes: "Booked evening service in town; student or staff card required.",
-        source_url: "https://www0.sun.ac.za/sustainability/pages/services/transport/campus-shuttle-service.php"
-      },
+    // ── HIRAKATA / KANSAI ──────────────────────────────────────────
+    {
+      location: "Hirakata, Japan (Kansai Gaidai University)",
+      display_type: "Public Transit",
+      option_name: "Keihan Bus – Campus Connections",
+      cost_display: "—",
+      cost_basis: "Fare not listed",
+      cost_level: "Unknown",
+      grade: "B",
+      description: "Keihan buses run from Hirakata-shi Station to both the Gotenyama Global Town campus and Nakamiya campus. This is a standard city bus service and the main public transit link between the nearest rail station and Kansai Gaidai University's campuses.",
+      how_to_access: "Board Keihan buses from Hirakata-shi Station — signs and timetables are posted at the station. Pay the fare on board (cash or IC card). Check the Kansai Gaidai access page for the current route numbers and timetable before your first trip.",
+      tiers: [],
+      note: "The exact fare was not listed on the official access page; confirm current pricing at the station or through the university.",
+      source_url: "https://www.kansaigaidai.ac.jp/en/access/"
+    },
+    {
+      location: "Hirakata, Japan (Kansai Gaidai University)",
+      display_type: "Airport Transport",
+      option_name: "KIX Limousine Bus to Hirakata",
+      cost_display: "—",
+      cost_basis: "Fare linked externally",
+      cost_level: "Unknown",
+      grade: "C",
+      description: "A direct limousine bus service runs from Kansai International Airport (KIX) to Hirakata city, making it a convenient option for your arrival with luggage. This avoids the need to navigate multiple rail transfers when you first arrive.",
+      how_to_access: "After clearing customs at KIX, follow signs to the limousine bus area. Buy a ticket at the limousine bus counter for the Hirakata route. Check the operator's timetable linked from the Kansai Gaidai access page before your flight so you know the schedule on arrival.",
+      tiers: [],
+      note: "Fare and schedule details are on the operator's timetable page linked from the official Kansai Gaidai access guide.",
+      source_url: "https://www.kansaigaidai.ac.jp/en/access/"
+    },
+    {
+      location: "Hirakata, Japan (Kansai Gaidai University)",
+      display_type: "Rail Pass",
+      option_name: "Keihan Kyoto-Osaka Sightseeing Pass",
+      cost_display: "¥1,650",
+      cost_basis: "1 day",
+      cost_level: "Low",
+      grade: "A",
+      description: "A 1-day pass for unlimited rides on the Keihan railway line between Kyoto and Osaka. Hirakata is on this line, making this a great option for weekend day trips to Kyoto or Osaka without paying per-ride fares.",
+      how_to_access: "Buy the Keihan Sightseeing Pass at Keihan stations or through authorized sales points. Show the pass to board any Keihan line train for the day. Check the current price and any promotional versions at the station before purchasing.",
+      tiers: [
+        { label: "1-day pass", cost: "¥1,650" }
+      ],
+      note: "Most useful for day trips. For frequent regional travel, compare against loading a regular ICOCA IC card.",
+      source_url: "https://www.keihan.co.jp/travel/en/"
+    },
 
-      // ---- Florence, Italy ----
-      {
-        location: "Florence, Italy (Scuola Lorenzo de' Medici)",
-        transportation_type: "bus/tram/regional rail within Florence coverage",
-        option_name: "Urban ticket",
-        cost_value: 1.70,
-        cost_currency: "EUR",
-        cost_basis: "per ticket",
-        notes: "Valid 90 minutes in Florence; also covers tram and some regional rail usage within the Florence metropolitan setup.",
-        source_url: "https://www.at-bus.it/it/ticket/biglietti-urbani/biglietto-urbano-capoluogo"
-      },
-      {
-        location: "Florence, Italy (Scuola Lorenzo de' Medici)",
-        transportation_type: "bus/tram",
-        option_name: "SMS urban ticket",
-        cost_value: 2.00,
-        cost_currency: "EUR",
-        cost_basis: "per ticket",
-        notes: "Plus operator cost; Florence validity is 90 minutes.",
-        source_url: "https://www.at-bus.it/it/ticket/biglietti-urbani/biglietto-sms-urbano-capoluogo"
-      },
-      {
-        location: "Florence, Italy (Scuola Lorenzo de' Medici)",
-        transportation_type: "bus/tram/regional rail within Florence coverage",
-        option_name: "Urban monthly pass",
-        cost_value: 38.70,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "Valid for one calendar month; in Florence also includes tramway and regional trains per operator coverage.",
-        source_url: "https://www.at-bus.it/it/ticket/abbonamenti-urbani/abbonamento-urbano-capoluogo-mensile"
-      },
+    // ── PARIS ──────────────────────────────────────────────────────
+    {
+      location: "Paris, France (Paris College of Art and Accent Study Center)",
+      display_type: "Public Transit",
+      option_name: "Navigo Monthly Pass",
+      cost_display: "€84.40 / month",
+      cost_basis: "Per calendar month",
+      cost_level: "High",
+      grade: "A",
+      description: "The Navigo monthly pass gives you unlimited travel on metro, RER suburban rail, bus, tram, and many suburban train lines across the Île-de-France region. It's the standard choice for anyone living and studying in Paris for a full semester — the unlimited nature means you never have to think about per-trip costs.",
+      how_to_access: "You need a Navigo card to load the monthly pass. Get a Navigo Découverte card (€5 one-time fee, no ID photo needed) or a Navigo card (requires a photo) at any metro station service window or main train stations. Load the monthly pass at a ticket machine or through the Bonjour RATP app. The pass runs by calendar month, so buy it at the start of a month for best value.",
+      tiers: [
+        { label: "Monthly pass", cost: "€84.40" },
+        { label: "Navigo Découverte card (one-time fee)", cost: "€5.00" },
+        { label: "Navigo Easy card (one-time fee, non-nominative)", cost: "€2.00" }
+      ],
+      note: "The pass covers all zones including the airport (CDG and Orly) — no need for a separate airport ticket once you have an active Navigo pass.",
+      source_url: "https://www.bonjour-ratp.fr/en/titres-tarifs/forfait-navigo-mois/"
+    },
+    {
+      location: "Paris, France (Paris College of Art and Accent Study Center)",
+      display_type: "Bike Share",
+      option_name: "Vélib' Bike Share",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "A",
+      description: "Vélib' is Paris's large public bike-share system with thousands of docked bikes (classic and electric) across the city and inner suburbs. Plans range from a free-registration occasional-use option to a monthly subscription for frequent riders. It's an excellent supplement to the Navigo pass for short trips within the city.",
+      how_to_access: "Sign up at velib-metropole.fr or through the Vélib' app. Choose the plan that fits your riding frequency — V-Libre for occasional use (registration fee only), V-Plus for regular riders (30 min free per journey), or V-Max for frequent e-bike users. Unlock bikes through the app or at the terminal on the docking station.",
+      tiers: [
+        { label: "V-Libre – occasional use (registration fee: €6)", cost: "€0 / month" },
+        { label: "V-Plus – 30 min classic bikes free (12-month plan)", cost: "€4.30 / month" },
+        { label: "V-Max – 60 min classic + e-bike rates (12-month plan)", cost: "€9.30 / month" }
+      ],
+      note: "E-bike rides cost extra beyond the free classic-bike minutes on all plans. First time? Start with V-Libre to try it out.",
+      source_url: "https://www.velib-metropole.fr/en/offers"
+    },
 
-      // ---- Rome, Italy ----
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "metro/bus/tram/urban rail",
-        option_name: "ROMA 24H",
-        cost_value: 8.50,
-        cost_currency: "EUR",
-        cost_basis: "24 hours",
-        notes: "Official ATAC price.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/request-and-charge-online"
-      },
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "metro/bus/tram/urban rail",
-        option_name: "ROMA 48H",
-        cost_value: 15.00,
-        cost_currency: "EUR",
-        cost_basis: "48 hours",
-        notes: "Official ATAC price.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/request-and-charge-online"
-      },
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "metro/bus/tram/urban rail",
-        option_name: "ROMA 72H",
-        cost_value: 22.00,
-        cost_currency: "EUR",
-        cost_basis: "72 hours",
-        notes: "Official ATAC price.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/request-and-charge-online"
-      },
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "metro/bus/tram/urban rail",
-        option_name: "CIS integrated weekly card",
-        cost_value: 29.00,
-        cost_currency: "EUR",
-        cost_basis: "7 days",
-        notes: "Official ATAC price.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/request-and-charge-online"
-      },
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "metro/bus/tram/urban rail",
-        option_name: "Monthly personal Metrebus Roma pass",
-        cost_value: 35.00,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "Official ATAC price.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/cards"
-      },
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "metro/bus/tram/urban rail",
-        option_name: "Monthly impersonal Metrebus Roma pass",
-        cost_value: 53.00,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "Official ATAC price.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/cards"
-      },
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "metro/bus/tram/urban rail",
-        option_name: "Annual Metrebus Roma pass",
-        cost_value: 250.00,
-        cost_currency: "EUR",
-        cost_basis: "per year",
-        notes: "Official ATAC price.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/cards"
-      },
-      {
-        location: "Rome, Italy (American University of Rome)",
-        transportation_type: "student discount pass",
-        option_name: "Annual Rome discounted pass – student/youth",
-        cost_value: 130.00,
-        cost_currency: "EUR",
-        cost_basis: "per year",
-        notes: "Tiered by ISEE income; page shows €130/€140/€150. Eligibility restrictions apply.",
-        source_url: "https://www.atac.roma.it/en/tickets-and-passes/young-people-and-students"
-      },
+    // ── PRAGUE ─────────────────────────────────────────────────────
+    {
+      location: "Prague, Czech Republic (Charles University)",
+      display_type: "Public Transit",
+      option_name: "Prague PID Transit (Metro, Tram & Bus)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "A",
+      description: "Prague's integrated PID transit system covers the metro (3 lines), trams, and buses across the city. For students aged 18–26 with a valid study certificate, heavily discounted subscription passes are available — the student monthly pass is one of the best-value transit deals in this dataset. Short-term paper or app tickets are also available for occasional use.",
+      how_to_access: "Download the PID Lítačka app to buy app tickets (slightly cheaper than paper). For student subscription passes, visit a PID customer centre (e.g. at main metro stations) with your valid Charles University student ID or study certificate to verify eligibility and get the discounted pass loaded onto a Lítačka card.",
+      tiers: [
+        { label: "30-min ticket (app)",     cost: "CZK 36" },
+        { label: "30-min ticket (paper)",   cost: "CZK 39" },
+        { label: "90-min ticket (app)",     cost: "CZK 46" },
+        { label: "90-min ticket (paper)",   cost: "CZK 50" },
+        { label: "24-hour pass (app)",      cost: "CZK 140" },
+        { label: "72-hour pass (app)",      cost: "CZK 340" },
+        { label: "Student monthly pass",    cost: "CZK 130" },
+        { label: "Student 3-month pass",    cost: "CZK 360" },
+        { label: "Student annual pass",     cost: "CZK 1,280" }
+      ],
+      note: "CZK = Czech Koruna. As of 2025, roughly CZK 24 ≈ $1 USD. Student passes require proof of enrollment at a Czech institution.",
+      source_url: "https://pid.cz/en/tickets-and-fare/"
+    },
 
-      // ---- London – Roehampton ----
-      {
-        location: "London-Roehampton, UK (University of Roehampton)",
-        transportation_type: "bus/tram",
-        option_name: "Adult pay as you go fare",
-        cost_value: 1.75,
-        cost_currency: "GBP",
-        cost_basis: "per journey",
-        notes: "Hopper fare gives unlimited bus/tram journeys within one hour.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Roehampton, UK (University of Roehampton)",
-        transportation_type: "bus/tram",
-        option_name: "Adult daily cap",
-        cost_value: 5.25,
-        cost_currency: "GBP",
-        cost_basis: "per day",
-        notes: "Bus and tram adult cap.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Roehampton, UK (University of Roehampton)",
-        transportation_type: "bus/tram",
-        option_name: "Adult weekly cap",
-        cost_value: 24.70,
-        cost_currency: "GBP",
-        cost_basis: "per week",
-        notes: "Monday–Sunday bus and tram cap.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Roehampton, UK (University of Roehampton)",
-        transportation_type: "student pass",
-        option_name: "18+ Student Oyster – Bus & Tram monthly pass",
-        cost_value: 66.50,
-        cost_currency: "GBP",
-        cost_basis: "per month",
-        notes: "30% off season tickets for eligible students.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Roehampton, UK (University of Roehampton)",
-        transportation_type: "student pass",
-        option_name: "18+ Student Oyster – Zones 1-2 monthly Travelcard",
-        cost_value: 119.90,
-        cost_currency: "GBP",
-        cost_basis: "per month",
-        notes: "From official 2026 18+ Student Oyster PDF.",
-        source_url: "https://content.tfl.gov.uk/18-plus-student-oyster-photocard-fares.pdf"
-      },
-      {
-        location: "London-Roehampton, UK (University of Roehampton)",
-        transportation_type: "bike share",
-        option_name: "Santander Cycles day pass",
-        cost_value: 3.00,
-        cost_currency: "GBP",
-        cost_basis: "24 hours",
-        notes: "Unlimited 30-minute rides in 24 hours.",
-        source_url: "https://tfl.gov.uk/modes/cycling/santander-cycles"
-      },
+    // ── STELLENBOSCH ───────────────────────────────────────────────
+    {
+      location: "Stellenbosch, South Africa (Stellenbosch University)",
+      display_type: "Public Transit",
+      option_name: "Stellenbosch University Campus Shuttle",
+      cost_display: "Free",
+      cost_basis: "Included with student card",
+      cost_level: "Free",
+      grade: "B",
+      description: "Stellenbosch University operates a daytime on-campus shuttle service and a bookable evening shuttle service in town. Both are available to students and staff at no additional cost beyond your student card. The evening shuttle is particularly important from a safety perspective — Stellenbosch University recommends using it rather than walking alone at night.",
+      how_to_access: "Your Stellenbosch University student card is your access credential for both shuttles. The daytime shuttle runs set routes on campus — check posted timetables at shuttle stops. The evening town shuttle must be booked in advance; contact the university's transport office or check the campus sustainability transport page for the current booking process.",
+      tiers: [
+        { label: "Daytime on-campus shuttle", cost: "Free" },
+        { label: "Evening town shuttle (booked)", cost: "Free" }
+      ],
+      note: "Follow Stellenbosch University's local safety guidance. The evening shuttle is the recommended way to get around town after dark.",
+      source_url: "https://www0.sun.ac.za/sustainability/pages/services/transport/campus-shuttle-service.php"
+    },
 
-      // ---- London – Westminster ----
-      {
-        location: "London-Westminster, UK (University of Westminster)",
-        transportation_type: "bus/tram",
-        option_name: "Adult pay as you go fare",
-        cost_value: 1.75,
-        cost_currency: "GBP",
-        cost_basis: "per journey",
-        notes: "Hopper fare gives unlimited bus/tram journeys within one hour.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Westminster, UK (University of Westminster)",
-        transportation_type: "bus/tram",
-        option_name: "Adult daily cap",
-        cost_value: 5.25,
-        cost_currency: "GBP",
-        cost_basis: "per day",
-        notes: "Bus and tram adult cap.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Westminster, UK (University of Westminster)",
-        transportation_type: "bus/tram",
-        option_name: "Adult weekly cap",
-        cost_value: 24.70,
-        cost_currency: "GBP",
-        cost_basis: "per week",
-        notes: "Monday–Sunday bus and tram cap.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Westminster, UK (University of Westminster)",
-        transportation_type: "student pass",
-        option_name: "18+ Student Oyster – Bus & Tram monthly pass",
-        cost_value: 66.50,
-        cost_currency: "GBP",
-        cost_basis: "per month",
-        notes: "30% off season tickets for eligible students.",
-        source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
-      },
-      {
-        location: "London-Westminster, UK (University of Westminster)",
-        transportation_type: "student pass",
-        option_name: "18+ Student Oyster – Zones 1-2 monthly Travelcard",
-        cost_value: 119.90,
-        cost_currency: "GBP",
-        cost_basis: "per month",
-        notes: "From official 2026 18+ Student Oyster PDF.",
-        source_url: "https://content.tfl.gov.uk/18-plus-student-oyster-photocard-fares.pdf"
-      },
-      {
-        location: "London-Westminster, UK (University of Westminster)",
-        transportation_type: "bike share",
-        option_name: "Santander Cycles day pass",
-        cost_value: 3.00,
-        cost_currency: "GBP",
-        cost_basis: "24 hours",
-        notes: "Unlimited 30-minute rides in 24 hours.",
-        source_url: "https://tfl.gov.uk/modes/cycling/santander-cycles"
-      },
+    // ── FLORENCE ───────────────────────────────────────────────────
+    {
+      location: "Florence, Italy (Scuola Lorenzo de' Medici)",
+      display_type: "Public Transit",
+      option_name: "Florence City Transit (ATAF / AT Bus)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "B",
+      description: "Florence's city bus and tram network (operated by ATAF and AT Bus) is the main public transit option for getting to areas beyond the walkable historic center. A standard urban ticket is valid for 90 minutes across buses and trams, and covers some regional rail lines within the metropolitan area. A monthly pass is available for semester students who commute regularly.",
+      how_to_access: "Buy urban tickets at tabaccherie (tobacconist shops), newsstands, or ATAF machines before boarding — you cannot buy standard tickets on the bus. Validate your ticket in the machine when you board. For a monthly pass, purchase at ATAF customer service points or official sales outlets; ask about student options when you buy.",
+      tiers: [
+        { label: "Urban ticket (90 min, at machine/shop)",  cost: "€1.70" },
+        { label: "Urban ticket via SMS (plus operator fee)", cost: "€2.00" },
+        { label: "Urban monthly pass",                      cost: "€38.70" }
+      ],
+      note: "Always validate your ticket as soon as you board. Inspectors fine riders without a validated ticket even if it has been purchased.",
+      source_url: "https://www.at-bus.it"
+    },
 
-      // ---- Oxford, UK ----
-      {
-        location: "Oxford, UK (St. Catherine's College)",
-        transportation_type: "bus pass",
-        option_name: "University discounted bus pass scheme",
-        cost_value: null,
-        cost_currency: "GBP",
-        cost_basis: "discounted season ticket",
-        notes: "University of Oxford: students can get up to 10% off 13-week or 52-week season tickets from Oxford Bus Company/Thames Travel and Stagecoach Oxford Tube.",
-        source_url: "https://www.ox.ac.uk/students/life/travel"
-      },
-      {
-        location: "Oxford, UK (St. Catherine's College)",
-        transportation_type: "rail discount",
-        option_name: "16-25 Railcard / full-time student railcard benefit",
-        cost_value: null,
-        cost_currency: "GBP",
-        cost_basis: "discount program",
-        notes: "Railcards give one third off ticket prices for 16–25 year olds and full-time students over 25.",
-        source_url: "https://www.ox.ac.uk/students/life/travel"
-      },
-      {
-        location: "Oxford, UK (St. Catherine's College)",
-        transportation_type: "bike/e-bike hire",
-        option_name: "Bike / e-bike hire in Oxford",
-        cost_value: null,
-        cost_currency: "GBP",
-        cost_basis: "varies by provider",
-        notes: "University of Oxford lists Bainton Bikes, Brompton Bike Hire, and Voi Scooters as available hire options.",
-        source_url: "https://www.ox.ac.uk/students/life/travel"
-      },
+    // ── ROME ───────────────────────────────────────────────────────
+    {
+      location: "Rome, Italy (American University of Rome)",
+      display_type: "Public Transit",
+      option_name: "Rome ATAC Transit (Metro, Bus & Tram)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "B",
+      description: "Rome's ATAC network covers metro lines A, B, and C plus buses and trams across the city. Timed passes (24h, 48h, 72h) are ideal for arrival and short stays, while the monthly personal pass is the best value for semester-long commuting. An annual student/youth discounted pass is also available based on income eligibility.",
+      how_to_access: "Buy tickets and passes at metro station machines, authorized tabaccherie, or online through the ATAC website. The monthly personal pass requires registration — go to an ATAC service point with your ID. The annual discounted pass for students/youth requires income verification (ISEE); contact ATAC for the application process.",
+      tiers: [
+        { label: "ROMA 24H pass",                              cost: "€8.50" },
+        { label: "ROMA 48H pass",                              cost: "€15.00" },
+        { label: "ROMA 72H pass",                              cost: "€22.00" },
+        { label: "CIS integrated weekly card",                 cost: "€29.00" },
+        { label: "Monthly personal Metrebus Roma pass",        cost: "€35.00" },
+        { label: "Monthly impersonal Metrebus Roma pass",      cost: "€53.00" },
+        { label: "Annual Metrebus Roma pass",                  cost: "€250.00" },
+        { label: "Annual pass – student/youth (income-based)", cost: "from €130.00" }
+      ],
+      note: "Rush hours on the Rome metro can be very crowded — allow extra time. The annual student/youth pass tiers are €130 / €140 / €150 depending on ISEE income level.",
+      source_url: "https://www.atac.roma.it/en/tickets-and-passes"
+    },
 
-      // ---- Barcelona, Spain ----
-      {
-        location: "Barcelona, Spain",
-        transportation_type: "metro/bus/tram",
-        option_name: "Single ticket",
-        cost_value: 2.90,
-        cost_currency: "EUR",
-        cost_basis: "per journey",
-        notes: "Valid for metro, bus, and Montjuïc funicular.",
-        source_url: "https://www.tmb.cat/en/barcelona-fares-metro-bus/single-ticket"
-      },
-      {
-        location: "Barcelona, Spain",
-        transportation_type: "metro/bus/tram",
-        option_name: "T-casual (1 zone)",
-        cost_value: 13.00,
-        cost_currency: "EUR",
-        cost_basis: "10 journeys",
-        notes: "Official TMB price.",
-        source_url: "https://www.tmb.cat/en/barcelona-fares-metro-bus/t-casual"
-      },
-      {
-        location: "Barcelona, Spain",
-        transportation_type: "metro/bus/tram",
-        option_name: "T-usual (1 zone)",
-        cost_value: 22.80,
-        cost_currency: "EUR",
-        cost_basis: "30 consecutive days",
-        notes: "Unlimited journeys; non-transferable; valid to airport metro stations T1/T2 on L9 Sud.",
-        source_url: "https://www.tmb.cat/en/barcelona-fares-metro-bus/t-usual"
-      },
-      {
-        location: "Barcelona, Spain",
-        transportation_type: "bike share",
-        option_name: "Bicing annual flat rate",
-        cost_value: 50.00,
-        cost_currency: "EUR",
-        cost_basis: "per year",
-        notes: "Subscription includes 30 minutes per journey before extra time charges.",
-        source_url: "https://www.barcelona.cat/internationalwelcome/en/bicing-barcelona-public-bicycle-service"
-      },
-      {
-        location: "Barcelona, Spain",
-        transportation_type: "bike share",
-        option_name: "Bicing annual occasional-use rate",
-        cost_value: 35.00,
-        cost_currency: "EUR",
-        cost_basis: "per year",
-        notes: "Occasional-use annual plan; 30 minutes per journey before extra time charges.",
-        source_url: "https://www.barcelona.cat/internationalwelcome/en/bicing-barcelona-public-bicycle-service"
-      },
+    // ── LONDON – ROEHAMPTON ────────────────────────────────────────
+    {
+      location: "London-Roehampton, UK (University of Roehampton)",
+      display_type: "Public Transit",
+      option_name: "London Bus & Tram (TfL – Oyster / Contactless)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "B",
+      description: "London's bus and tram network is managed by Transport for London (TfL) and uses a tap-on/tap-off fare system via Oyster card or contactless bank card/phone. A single fare is capped with the Hopper rule (unlimited bus/tram journeys within 1 hour for one fare). Daily and weekly caps prevent overspending. Students at University of Roehampton may qualify for the 18+ Student Oyster photocard for 30% off season tickets.",
+      how_to_access: "Use your contactless bank card or phone to tap in and out — this is the simplest option for most international students. Alternatively, buy an Oyster card at any Tube station or major bus hub. For the 18+ Student Oyster discount, apply through TfL with proof of enrollment at a qualifying London institution before or just after arrival.",
+      tiers: [
+        { label: "Single adult journey (Hopper)",          cost: "£1.75" },
+        { label: "Adult daily cap",                        cost: "£5.25" },
+        { label: "Adult weekly cap",                       cost: "£24.70" },
+        { label: "18+ Student Oyster – monthly pass (bus/tram)", cost: "£66.50" }
+      ],
+      note: "The Hopper fare means one payment covers unlimited bus and tram journeys within 60 minutes — ideal for multi-bus routes.",
+      source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
+    },
+    {
+      location: "London-Roehampton, UK (University of Roehampton)",
+      display_type: "Student Pass / Discount",
+      option_name: "18+ Student Oyster – Zones 1-2 Travelcard",
+      cost_display: "£119.90 / month",
+      cost_basis: "Per month",
+      cost_level: "High",
+      grade: "A",
+      description: "The 18+ Student Oyster Zones 1-2 monthly Travelcard gives unlimited travel on Tube, bus, tram, Overground, DLR, and many National Rail services within Zones 1 and 2. This is the best option if you commute daily within those zones and want to avoid tracking individual fares.",
+      how_to_access: "Apply for the 18+ Student Oyster photocard online at TfL with proof of full-time enrollment at a qualifying London institution. Once approved, buy the monthly Travelcard at any Tube station machine or online. Processing can take a few days, so apply before or just after arrival.",
+      tiers: [
+        { label: "Zones 1-2 monthly Travelcard (student rate)", cost: "£119.90" }
+      ],
+      note: "Check whether your campus and housing are both within Zones 1-2 before buying — if you need Zone 3 or beyond, costs rise significantly.",
+      source_url: "https://content.tfl.gov.uk/18-plus-student-oyster-photocard-fares.pdf"
+    },
+    {
+      location: "London-Roehampton, UK (University of Roehampton)",
+      display_type: "Bike Share",
+      option_name: "Santander Cycles",
+      cost_display: "£3 / day",
+      cost_basis: "24-hour access pass",
+      cost_level: "Low",
+      grade: "A",
+      description: "Santander Cycles (Boris Bikes) is London's public docked bike-share system with hundreds of stations across inner London. A day pass gives you unlimited 60-minute journeys within 24 hours — ideal for short central trips or exploring the city. E-bike options are also available at a higher per-ride rate.",
+      how_to_access: "Download the TfL Santander Cycles app or use the terminal at any docking station to buy a day pass or pay per ride. No subscription needed — just tap and go. Return the bike to any docking station when done.",
+      tiers: [
+        { label: "Day pass – unlimited 60-min rides", cost: "£3.00" }
+      ],
+      note: "Bikes must be returned to a docking station — check the app for nearby open bays, especially during busy times.",
+      source_url: "https://tfl.gov.uk/modes/cycling/santander-cycles"
+    },
 
-      // ---- Madrid, Spain ----
-      {
-        location: "Madrid, Spain (Universidad Nebrija)",
-        transportation_type: "student pass",
-        option_name: "Abono Joven",
-        cost_value: 10.00,
-        cost_currency: "EUR",
-        cost_basis: "30 days",
-        notes: "Unlimited travel; official CRTM price. Age eligibility applies.",
-        source_url: "https://www.crtm.es/billetes-y-tarifas/buscador/abono-joven/"
-      },
-      {
-        location: "Madrid, Spain (Universidad Nebrija)",
-        transportation_type: "metro/bus",
-        option_name: "EMT single bus ticket",
-        cost_value: 1.50,
-        cost_currency: "EUR",
-        cost_basis: "per journey",
-        notes: "Madrid city bus.",
-        source_url: "https://www.crtm.es/billetes-y-tarifas/buscador/sencillos-y-10-viajes/"
-      },
-      {
-        location: "Madrid, Spain (Universidad Nebrija)",
-        transportation_type: "metro/bus",
-        option_name: "Metrobús 10-trip ticket",
-        cost_value: 7.30,
-        cost_currency: "EUR",
-        cost_basis: "10 journeys",
-        notes: "Valid for EMT network and Metro Zone A.",
-        source_url: "https://www.crtm.es/billetes-y-tarifas/buscador/sencillos-y-10-viajes/"
-      },
-      {
-        location: "Madrid, Spain (Universidad Nebrija)",
-        transportation_type: "metro",
-        option_name: "Metro Zona A single ticket",
-        cost_value: 1.50,
-        cost_currency: "EUR",
-        cost_basis: "per journey",
-        notes: "Official page shows range €1.50–€2.00 depending on number of stations.",
-        source_url: "https://www.crtm.es/billetes-y-tarifas/buscador/sencillos-y-10-viajes/"
-      },
-      {
-        location: "Madrid, Spain (Universidad Nebrija)",
-        transportation_type: "airport transport",
-        option_name: "Airport Express bus",
-        cost_value: 5.00,
-        cost_currency: "EUR",
-        cost_basis: "per journey",
-        notes: "Official CRTM fare.",
-        source_url: "https://www.crtm.es/billetes-y-tarifas/buscador/sencillos-y-10-viajes/"
-      },
-      {
-        location: "Madrid, Spain (Universidad Nebrija)",
-        transportation_type: "bike share",
-        option_name: "BiciMAD 30-day flat rate",
-        cost_value: 10.00,
-        cost_currency: "EUR",
-        cost_basis: "per month",
-        notes: "Unlimited free rides up to 30 minutes; second 30-minute fraction €0.50; later fractions €3.",
-        source_url: "https://www.bicimad.com/en/bicimad"
-      },
-      {
-        location: "Madrid, Spain (Universidad Nebrija)",
-        transportation_type: "bike share",
-        option_name: "BiciMAD basic contract",
-        cost_value: 0.50,
-        cost_currency: "EUR",
-        cost_basis: "first 30 minutes",
-        notes: "Second 30-minute fraction €0.50; following 30-minute fractions €3.",
-        source_url: "https://www.bicimad.com/en/bicimad"
-      },
+    // ── LONDON – WESTMINSTER ───────────────────────────────────────
+    {
+      location: "London-Westminster, UK (University of Westminster)",
+      display_type: "Public Transit",
+      option_name: "London Bus & Tram (TfL – Oyster / Contactless)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "B",
+      description: "London's bus and tram network is managed by Transport for London (TfL) and uses a tap-on/tap-off fare system via Oyster card or contactless bank card/phone. A single fare is capped with the Hopper rule (unlimited bus/tram journeys within 1 hour for one fare). Daily and weekly caps prevent overspending. Students at University of Westminster may qualify for the 18+ Student Oyster photocard for 30% off season tickets.",
+      how_to_access: "Use your contactless bank card or phone to tap in and out — this is the simplest option for most international students. Alternatively, buy an Oyster card at any Tube station or major bus hub. For the 18+ Student Oyster discount, apply through TfL with proof of enrollment at a qualifying London institution before or just after arrival.",
+      tiers: [
+        { label: "Single adult journey (Hopper)",          cost: "£1.75" },
+        { label: "Adult daily cap",                        cost: "£5.25" },
+        { label: "Adult weekly cap",                       cost: "£24.70" },
+        { label: "18+ Student Oyster – monthly pass (bus/tram)", cost: "£66.50" }
+      ],
+      note: "The Hopper fare means one payment covers unlimited bus and tram journeys within 60 minutes — ideal for multi-bus routes.",
+      source_url: "https://tfl.gov.uk/fares/find-fares/bus-and-tram-fares"
+    },
+    {
+      location: "London-Westminster, UK (University of Westminster)",
+      display_type: "Student Pass / Discount",
+      option_name: "18+ Student Oyster – Zones 1-2 Travelcard",
+      cost_display: "£119.90 / month",
+      cost_basis: "Per month",
+      cost_level: "High",
+      grade: "A",
+      description: "The 18+ Student Oyster Zones 1-2 monthly Travelcard gives unlimited travel on Tube, bus, tram, Overground, DLR, and many National Rail services within Zones 1 and 2. University of Westminster's campuses are well within Zone 1, making this a natural fit for daily commuters.",
+      how_to_access: "Apply for the 18+ Student Oyster photocard online at TfL with proof of full-time enrollment at a qualifying London institution. Once approved, buy the monthly Travelcard at any Tube station machine or online. Processing can take a few days, so apply before or just after arrival.",
+      tiers: [
+        { label: "Zones 1-2 monthly Travelcard (student rate)", cost: "£119.90" }
+      ],
+      note: "Westminster campuses are in Zone 1 — this pass covers your full daily commute without needing to top up.",
+      source_url: "https://content.tfl.gov.uk/18-plus-student-oyster-photocard-fares.pdf"
+    },
+    {
+      location: "London-Westminster, UK (University of Westminster)",
+      display_type: "Bike Share",
+      option_name: "Santander Cycles",
+      cost_display: "£3 / day",
+      cost_basis: "24-hour access pass",
+      cost_level: "Low",
+      grade: "A",
+      description: "Santander Cycles (Boris Bikes) is London's public docked bike-share system with hundreds of stations across inner London. A day pass gives you unlimited 60-minute journeys within 24 hours — ideal for short central trips or exploring the city. The University of Westminster's central London campuses are close to many docking stations.",
+      how_to_access: "Download the TfL Santander Cycles app or use the terminal at any docking station to buy a day pass or pay per ride. No subscription needed — just tap and go. Return the bike to any docking station when done.",
+      tiers: [
+        { label: "Day pass – unlimited 60-min rides", cost: "£3.00" }
+      ],
+      note: "Bikes must be returned to a docking station — check the app for nearby open bays, especially during busy times.",
+      source_url: "https://tfl.gov.uk/modes/cycling/santander-cycles"
+    },
 
-      // ---- Seville, Spain ----
-      {
-        location: "Seville, Spain (Universidad Pablo de Olavide)",
-        transportation_type: "bus/tram",
-        option_name: "TUSSAM single ticket",
-        cost_value: 1.40,
-        cost_currency: "EUR",
-        cost_basis: "per journey",
-        notes: "City bus / MetroCentro single fare.",
-        source_url: "https://www.tussam.es/en/node/1442"
-      },
-      {
-        location: "Seville, Spain (Universidad Pablo de Olavide)",
-        transportation_type: "bus/tram",
-        option_name: "TUSSAM multiviaje with transfer",
-        cost_value: 0.46,
-        cost_currency: "EUR",
-        cost_basis: "per journey (discounted fare)",
-        notes: "Regular fare €0.76; discounted fare €0.46; transfer allowed within 1 hour; card deposit €2.",
-        source_url: "https://www.tussam.es/en/node/1442"
-      },
-      {
-        location: "Seville, Spain (Universidad Pablo de Olavide)",
-        transportation_type: "student pass",
-        option_name: "TUSSAM student monthly pass",
-        cost_value: 11.40,
-        cost_currency: "EUR",
-        cost_basis: "per month (discounted fare)",
-        notes: "Regular fare €19.00; discounted fare €11.40.",
-        source_url: "https://www.tussam.es/es/titulos-de-viajes"
-      },
-      {
-        location: "Seville, Spain (Universidad Pablo de Olavide)",
-        transportation_type: "student pass",
-        option_name: "TUSSAM student September–July pass",
-        cost_value: 114.00,
-        cost_currency: "EUR",
-        cost_basis: "academic year (discounted fare)",
-        notes: "Regular fare €190.00; discounted fare €114.00.",
-        source_url: "https://www.tussam.es/es/titulos-de-viajes"
-      },
-      {
-        location: "Seville, Spain (Universidad Pablo de Olavide)",
-        transportation_type: "metro",
-        option_name: "Metro de Sevilla 1-day pass",
-        cost_value: 4.50,
-        cost_currency: "EUR",
-        cost_basis: "per day",
-        notes: "Unlimited metro rides on day of purchase.",
-        source_url: "https://www.metro-sevilla.es/horarios-y-tarifas?section=titulosMetro"
-      },
-      {
-        location: "Seville, Spain (Universidad Pablo de Olavide)",
-        transportation_type: "airport transport",
-        option_name: "EA airport bus single",
-        cost_value: 6.00,
-        cost_currency: "EUR",
-        cost_basis: "one way",
-        notes: "TUSSAM airport express.",
-        source_url: "https://www.tussam.es/en/descubre-sevilla/how-get-here"
-      },
+    // ── OXFORD ─────────────────────────────────────────────────────
+    {
+      location: "Oxford, UK (St. Catherine's College)",
+      display_type: "Public Transit",
+      option_name: "Oxford Bus / Stagecoach (Discounted Season Ticket)",
+      cost_display: "Varies",
+      cost_basis: "13-week or 52-week season ticket",
+      cost_level: "Unknown",
+      grade: "B",
+      description: "The University of Oxford arranges discounted bus season ticket schemes with Oxford Bus Company / Thames Travel and Stagecoach, offering up to 10% off for students. Oxford is highly walkable and very cycling-friendly, so bus use tends to be supplemental — useful for longer routes or bad weather.",
+      how_to_access: "Check the University of Oxford student travel page for the current discount codes or enrollment links for each operator's season ticket. Buy through Oxford Bus Company (oxfordbus.co.uk) or Stagecoach — use the university-negotiated discount code at checkout. A 13-week ticket covers most of one term; a 52-week ticket is better for a full year.",
+      tiers: [],
+      note: "Oxford is famously walkable and bike-friendly — many students find they rarely need the bus for day-to-day travel within the city.",
+      source_url: "https://www.ox.ac.uk/students/life/travel"
+    },
+    {
+      location: "Oxford, UK (St. Catherine's College)",
+      display_type: "Student Pass / Discount",
+      option_name: "16-25 Railcard / Full-Time Student Railcard",
+      cost_display: "⅓ off rail fares",
+      cost_basis: "Per qualifying journey",
+      cost_level: "Unknown",
+      grade: "A",
+      description: "A Railcard gives students aged 16–25 (or full-time students over 25) one-third off almost all UK rail fares. Oxford has excellent rail connections to London and beyond, making this one of the best-value transit investments for students who plan to travel by train at all during their semester.",
+      how_to_access: "Buy the 16-25 Railcard or Full-Time Student Railcard at railcard.co.uk or through the National Rail app. You'll need proof of age or a letter/certificate confirming full-time student status. The card costs a flat annual fee and the discount applies automatically whenever you book a rail ticket linked to your Railcard.",
+      tiers: [],
+      note: "The Railcard annual fee pays for itself after just a few London train trips. Always add your Railcard when searching for tickets on National Rail or trainline.com.",
+      source_url: "https://www.ox.ac.uk/students/life/travel"
+    },
+    {
+      location: "Oxford, UK (St. Catherine's College)",
+      display_type: "Bike Share",
+      option_name: "Bike & E-Bike Hire in Oxford (Bainton / Voi / Brompton)",
+      cost_display: "Varies",
+      cost_basis: "Pay-as-you-go or subscription",
+      cost_level: "Low",
+      grade: "A",
+      description: "Oxford is one of the most cycling-friendly cities in the UK. Multiple hire options are available: Bainton Bikes offers traditional bike hire, Brompton Bike Hire gives access to folding bikes good for combining with rail travel, and Voi offers dockless e-scooters and e-bikes across the city. Oxford cycling infrastructure is extensive.",
+      how_to_access: "For Voi e-bikes/scooters: download the Voi app and create an account to unlock a nearby bike. For Bainton Bikes: book online at baintonbikes.com. For Brompton: find hire points at Oxford Station and other locations. Student discounts may be available — check each provider's app or website.",
+      tiers: [],
+      note: "Always park Voi bikes in designated parking bays shown in the app — bikes left outside permitted zones incur a fee.",
+      source_url: "https://www.ox.ac.uk/students/life/travel"
+    },
 
-      // ---- Sydney, Australia ----
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "train/bus/ferry/light rail",
-        option_name: "Adult Opal daily cap",
-        cost_value: 19.30,
-        cost_currency: "AUD",
-        cost_basis: "per day (Mon–Thu)",
-        notes: "Official Transport for NSW adult cap.",
-        source_url: "https://transportnsw.info/tickets-fares/fares/adult-opal-fares"
-      },
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "train/bus/ferry/light rail",
-        option_name: "Adult Opal Friday/weekend/public holiday cap",
-        cost_value: 9.65,
-        cost_currency: "AUD",
-        cost_basis: "per day",
-        notes: "Official Transport for NSW adult cap.",
-        source_url: "https://transportnsw.info/tickets-fares/fares/adult-opal-fares"
-      },
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "train/bus/ferry/light rail",
-        option_name: "Adult Opal weekly cap",
-        cost_value: 50.00,
-        cost_currency: "AUD",
-        cost_basis: "per week",
-        notes: "Official Transport for NSW adult cap.",
-        source_url: "https://transportnsw.info/tickets-fares/fares/adult-opal-fares"
-      },
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "student pass",
-        option_name: "Concession Opal for tertiary students",
-        cost_value: null,
-        cost_currency: "AUD",
-        cost_basis: "fare discount",
-        notes: "Eligible tertiary students pay half the Adult Opal fare.",
-        source_url: "https://www.opal.com.au/en/about-opal/opal_for_concessions/opal_for_tertiary_institutions/"
-      },
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "student pass",
-        option_name: "Concession Opal daily cap",
-        cost_value: 9.65,
-        cost_currency: "AUD",
-        cost_basis: "per day (Mon–Thu)",
-        notes: "Official Transport for NSW concession cap.",
-        source_url: "https://transportnsw.info/tickets-fares/fares/concession-opal-fares"
-      },
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "student pass",
-        option_name: "Concession Opal Friday/weekend/public holiday cap",
-        cost_value: 4.80,
-        cost_currency: "AUD",
-        cost_basis: "per day",
-        notes: "Official Transport for NSW concession cap.",
-        source_url: "https://transportnsw.info/tickets-fares/fares/concession-opal-fares"
-      },
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "student pass",
-        option_name: "Concession Opal weekly cap",
-        cost_value: 25.00,
-        cost_currency: "AUD",
-        cost_basis: "per week",
-        notes: "Official Transport for NSW concession cap.",
-        source_url: "https://transportnsw.info/tickets-fares/fares/concession-opal-fares"
-      },
-      {
-        location: "Sydney, Australia (University of Sydney)",
-        transportation_type: "airport transport",
-        option_name: "Sydney Airport station access fee",
-        cost_value: null,
-        cost_currency: "AUD",
-        cost_basis: "additional fee",
-        notes: "An additional station access fee is charged on top of train fare at Domestic/International airport stations; numeric amount not surfaced on official page.",
-        source_url: "https://www.opal.com.au/en/opal-fares/airport_station_access_fee/"
-      }
-    ];
+    // ── BARCELONA ──────────────────────────────────────────────────
+    {
+      location: "Barcelona, Spain",
+      display_type: "Public Transit",
+      option_name: "Barcelona ATM Transit (Metro, Bus & Tram)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "A",
+      description: "Barcelona's integrated ATM transit system covers the metro, bus, tram, and local Rodalies commuter trains. The T-casual card (10 trips) is good for lighter use; the T-usual (30-day unlimited) is the standard semester pass. A single ticket is available for occasional rides or airport trips. The T-usual is also valid on metro L9 Sud to the airport.",
+      how_to_access: "Buy all ATM tickets at metro station machines (English-language interface), tourist offices, or authorized resellers. The T-usual and T-casual are loaded onto a plastic card — get the card and first load at any metro station. The T-usual is non-transferable and tied to one person.",
+      tiers: [
+        { label: "Single ticket",           cost: "€2.90" },
+        { label: "T-casual (10 journeys)",  cost: "€13.00" },
+        { label: "T-usual (30-day unlimited, 1 zone)", cost: "€22.80" }
+      ],
+      note: "The T-usual covers the airport metro (L9 Sud) within its zone — no separate airport supplement needed if your housing is within Zone 1.",
+      source_url: "https://www.tmb.cat/en/tickets-fares"
+    },
+    {
+      location: "Barcelona, Spain",
+      display_type: "Bike Share",
+      option_name: "Bicing Bike Share",
+      cost_display: "Varies",
+      cost_basis: "Annual subscription",
+      cost_level: "Medium",
+      grade: "A",
+      description: "Bicing is Barcelona's public bike-share system, available to residents and registered users. It has both classic and electric bikes at docking stations across the city. The annual plan includes 30 minutes per journey without extra charge. Note: Bicing is resident-focused — visitors and short-term students may need to check eligibility or use alternative rental options.",
+      how_to_access: "Register online at bicing.barcelona or in the Bicing app. You'll need a Spanish/EU bank account or payment method for the annual plan. Once registered, use the app to unlock bikes. Choose the flat-rate plan (more rides at any time) or the occasional-use plan depending on how often you'll ride.",
+      tiers: [
+        { label: "Annual flat-rate plan",        cost: "€50.00 / year" },
+        { label: "Annual occasional-use plan",   cost: "€35.00 / year" }
+      ],
+      note: "Bicing is primarily designed for Barcelona residents. If you encounter registration issues as an international student, ask your program coordinator about alternative bike rentals in the city.",
+      source_url: "https://www.barcelona.cat/internationalwelcome/en/bicing-barcelona-public-bicycle-service"
+    },
 
-    // =========================================================
-    // SUSTAINABILITY GRADE RULESET
-    // Edit this function to change grading rules for any type.
-    // Returns "A", "B", "C", or "Unknown".
-    // =========================================================
-    function deriveSustainabilityGrade(transportation_type) {
-      if (!transportation_type) return "Unknown";
-      const t = transportation_type.toLowerCase();
+    // ── MADRID ─────────────────────────────────────────────────────
+    {
+      location: "Madrid, Spain (Universidad Nebrija)",
+      display_type: "Public Transit",
+      option_name: "Madrid City Transit (Metro & EMT Bus)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "A",
+      description: "Madrid's integrated transit system covers metro, city buses (EMT), and Cercanías suburban rail. Single tickets and 10-trip Metrobús cards work across both metro and EMT buses in Zone A. For students under 26, the Abono Joven (youth monthly pass) is available separately at a heavily discounted rate.",
+      how_to_access: "Buy single tickets or Metrobús 10-trip cards at metro station machines — English-language menus are available. The card is reusable (refill as needed). For the Abono Joven youth pass, see the Student Pass entry below — it requires age verification and a TDT card application.",
+      tiers: [
+        { label: "Single metro ticket (Zone A)",  cost: "€1.50" },
+        { label: "Single EMT bus ticket",         cost: "€1.50" },
+        { label: "Metrobús 10-trip card",          cost: "€7.30" },
+        { label: "Airport Express bus",           cost: "€5.00" }
+      ],
+      note: "The Airport Express bus (Exprés Aeropuerto) runs 24/7 between Madrid-Barajas Airport and central Madrid. It uses a separate fare and is not covered by standard metro/bus tickets.",
+      source_url: "https://www.crtm.es"
+    },
+    {
+      location: "Madrid, Spain (Universidad Nebrija)",
+      display_type: "Student Pass / Discount",
+      option_name: "Abono Joven (Youth Monthly Pass)",
+      cost_display: "$10 / month",
+      cost_basis: "30 days",
+      cost_level: "Low",
+      grade: "A",
+      description: "The Abono Joven is Madrid's youth monthly pass offering unlimited travel on metro, bus, and Cercanías rail across Zone A for students and young people who meet the age requirements. At approximately €10/month, it is one of the most affordable semester transit passes in this entire dataset.",
+      how_to_access: "Apply for a TDT (Tarjeta de Transporte) card at a CRTM customer service center — bring your passport or ID and proof of age. Once you have the card, load the Abono Joven monthly pass at metro station machines or online. Age eligibility limits apply; check the CRTM website for the current criteria.",
+      tiers: [
+        { label: "Abono Joven – monthly unlimited (Zone A)", cost: "€10.00" }
+      ],
+      note: "Age eligibility requirements apply — check the CRTM website for current age limits before applying. This is exceptional value if you qualify.",
+      source_url: "https://www.crtm.es/billetes-y-tarifas/buscador/abono-joven/"
+    },
+    {
+      location: "Madrid, Spain (Universidad Nebrija)",
+      display_type: "Bike Share",
+      option_name: "BiciMAD Bike Share",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "A",
+      description: "BiciMAD is Madrid's public electric bike-share system with docking stations across the city. A monthly flat-rate plan gives you unlimited free 30-minute journeys throughout the month. It's a practical supplement to the metro for short crosstown trips and last-mile travel.",
+      how_to_access: "Download the BiciMAD app and create an account. Add a payment method and choose the 30-day flat-rate plan or pay-per-use. Unlock bikes from the app at any docking station. Return to any station when done.",
+      tiers: [
+        { label: "30-day flat rate (unlimited free 30-min rides)", cost: "€10.00" },
+        { label: "Basic contract – first 30 min",                  cost: "€0.50" },
+        { label: "Each additional 30-min fraction",                cost: "€0.50–€3.00" }
+      ],
+      note: "After the free 30-minute window, extra time charges apply. The monthly flat rate is the best value if you take more than a few rides per week.",
+      source_url: "https://www.bicimad.com/en/bicimad"
+    },
 
-      // Grade A: bike share, rail, metro, tram (lowest-emission / human-powered)
-      if (
-        t.includes("bike share") ||
-        t.includes("bike/e-bike") ||
-        t.includes("rail") ||
-        t.includes("metro") ||
-        t.includes("tram") ||
-        t.includes("light rail")
-      ) return "A";
+    // ── SEVILLE ────────────────────────────────────────────────────
+    {
+      location: "Seville, Spain (Universidad Pablo de Olavide)",
+      display_type: "Public Transit",
+      option_name: "Seville TUSSAM Bus & MetroCentro Tram",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "B",
+      description: "TUSSAM operates Seville's city bus network and the MetroCentro tram in the historic center. Single tickets are for occasional use; the multiviaje rechargeable card has a lower per-ride cost and allows transfers within 1 hour. For semester students, a heavily discounted monthly or academic-year student pass is the best value.",
+      how_to_access: "Single tickets can be bought on board from the driver. For the multiviaje card and student pass, go to a TUSSAM customer service point — bring your student ID and enrollment proof for the student discount. The card has a €2 deposit. Load trips or the monthly/annual pass at TUSSAM machines or service points.",
+      tiers: [
+        { label: "Single ticket",                                cost: "€1.40" },
+        { label: "Multiviaje per ride (discounted with card)",   cost: "€0.46" },
+        { label: "Student monthly pass (discounted)",            cost: "€11.40" },
+        { label: "Student Sep–Jul academic year pass (discounted)", cost: "€114.00" }
+      ],
+      note: "Regular (non-student) fares for the multiviaje and monthly pass are significantly higher. Always show your student ID when purchasing.",
+      source_url: "https://www.tussam.es"
+    },
+    {
+      location: "Seville, Spain (Universidad Pablo de Olavide)",
+      display_type: "Public Transit",
+      option_name: "Metro de Sevilla",
+      cost_display: "$4.50",
+      cost_basis: "1-day unlimited pass",
+      cost_level: "Low",
+      grade: "A",
+      description: "Seville's single metro line connects key areas of the city and nearby suburbs, including neighborhoods near Universidad Pablo de Olavide. A 1-day unlimited pass is available for easy access without per-trip ticketing.",
+      how_to_access: "Buy the 1-day pass at metro station ticket machines or customer service windows. The machine interface is available in English at most stations. Tap or insert your ticket at the turnstile each time you ride.",
+      tiers: [
+        { label: "1-day unlimited metro pass", cost: "€4.50" }
+      ],
+      note: "The metro is useful for longer cross-city trips. For short central trips, the TUSSAM bus or walking is often more practical.",
+      source_url: "https://www.metro-sevilla.es"
+    },
+    {
+      location: "Seville, Spain (Universidad Pablo de Olavide)",
+      display_type: "Airport Transport",
+      option_name: "EA Airport Bus (Seville Airport ↔ City Center)",
+      cost_display: "$6",
+      cost_basis: "One way",
+      cost_level: "Low",
+      grade: "C",
+      description: "The EA express bus connects Seville Airport (SVQ) directly to the city center with several convenient stops. It is operated by TUSSAM and is the main public transport option for airport arrivals and departures.",
+      how_to_access: "The EA bus departs from outside the arrivals terminal at Seville Airport. Tickets can be purchased on board from the driver — have cash or a contactless card ready. Check the TUSSAM website for the current timetable before you fly.",
+      tiers: [
+        { label: "EA airport bus – one way", cost: "€6.00" }
+      ],
+      note: "Far cheaper than a taxi or ride-hail from the airport. The journey to the city center takes roughly 35 minutes.",
+      source_url: "https://www.tussam.es/en/descubre-sevilla/how-get-here"
+    },
 
-      // Grade A: metro/bus/tram combos that include electric modes
-      if (
-        t.includes("metro/bus/tram") ||
-        t.includes("metro/tram") ||
-        t.includes("metro/rer") ||
-        t.includes("tram/bus") ||
-        t.includes("bus/tram")
-      ) return "A";
-
-      // Grade A: named rail passes
-      if (t.includes("rail pass") || t.includes("railcard") || t.includes("rail discount")) return "A";
-
-      // Grade B: bus, shuttle, student pass, transit card, mixed public transit
-      if (
-        t.includes("bus") ||
-        t.includes("shuttle") ||
-        t.includes("student pass") ||
-        t.includes("student fare") ||
-        t.includes("transit card") ||
-        t.includes("train/bus") ||
-        t.includes("campus bus")
-      ) return "B";
-
-      // Grade C: airport transport options
-      if (t.includes("airport")) return "C";
-
-      return "Unknown";
+    // ── SYDNEY ─────────────────────────────────────────────────────
+    {
+      location: "Sydney, Australia (University of Sydney)",
+      display_type: "Public Transit",
+      option_name: "Sydney Opal Card (Adult)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Medium",
+      grade: "B",
+      description: "The Opal card is Sydney's stored-value transit card, covering trains, buses, ferries, and light rail across the city and many regional areas. Fares are distance-based and capped daily and weekly — you never pay more than the cap regardless of how many journeys you take. Friday and weekend fares have a lower cap.",
+      how_to_access: "Pick up an Opal card at Sydney Airport on arrival or at any convenience store displaying the Opal sign (7-Eleven, newsagents, etc.). Register it online to protect your balance. Top up at machines, stores, or via the Opal app. Tap on and off at every journey — forgetting to tap off results in a maximum fare charge.",
+      tiers: [
+        { label: "Adult daily cap (Mon–Thu)",              cost: "AUD $19.30" },
+        { label: "Adult daily cap (Fri / weekends / holidays)", cost: "AUD $9.65" },
+        { label: "Adult weekly cap",                       cost: "AUD $50.00" }
+      ],
+      note: "Always tap OFF as well as tap ON — failing to tap off results in a maximum-distance fare charge for that journey.",
+      source_url: "https://transportnsw.info/tickets-fares/fares/adult-opal-fares"
+    },
+    {
+      location: "Sydney, Australia (University of Sydney)",
+      display_type: "Student Pass / Discount",
+      option_name: "Sydney Concession Opal Card (Tertiary Students)",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "B",
+      description: "Eligible full-time tertiary students in NSW pay half the adult Opal fare on all journeys. The same daily and weekly caps apply but at the concession rate, making public transit significantly more affordable across the semester.",
+      how_to_access: "Apply for a Concession Opal card through Transport for NSW — you'll need proof of full-time enrollment at an eligible Australian institution (like the University of Sydney). Once approved, your Concession Opal card automatically applies the half-fare discount on every trip. Apply as soon as your enrollment is confirmed.",
+      tiers: [
+        { label: "Concession daily cap (Mon–Thu)",              cost: "AUD $9.65" },
+        { label: "Concession daily cap (Fri / weekends / holidays)", cost: "AUD $4.80" },
+        { label: "Concession weekly cap",                       cost: "AUD $25.00" }
+      ],
+      note: "The concession card cuts your weekly cap to AUD $25 — a substantial saving over the adult rate for semester-long commuting.",
+      source_url: "https://transportnsw.info/tickets-fares/fares/concession-opal-fares"
+    },
+    {
+      location: "Sydney, Australia (University of Sydney)",
+      display_type: "Airport Transport",
+      option_name: "Sydney Airport Train (+ Station Access Fee)",
+      cost_display: "Varies",
+      cost_basis: "Opal fare + access fee",
+      cost_level: "Medium",
+      grade: "B",
+      description: "The Sydney Airport train runs directly from both the Domestic and International terminals to Central Station and many other stops across the network. It's the fastest and most reliable way into the city from the airport. Your regular Opal card covers the fare — but an additional station access fee is charged on top for airport station entries and exits.",
+      how_to_access: "Use your Opal card (or contactless bank card) to tap on at the airport train station. The station access fee is charged automatically on your Opal card in addition to the regular train fare. No separate ticket is needed. Trains depart frequently and run to Central Station in about 13 minutes.",
+      tiers: [
+        { label: "Regular Opal fare (distance-based)", cost: "Opal rate" },
+        { label: "Airport station access fee (additional)", cost: "Amount not listed — check opal.com.au" }
+      ],
+      note: "The airport access fee makes this slightly more expensive than a comparable non-airport train journey, but it is still much cheaper and faster than a taxi or rideshare from the airport.",
+      source_url: "https://www.opal.com.au/en/opal-fares/airport_station_access_fee/"
     }
 
-    // =========================================================
-    // COST LEVEL DERIVATION
-    // Derived from cost_value (currency-agnostic comparison band).
-    // =========================================================
-    function deriveCostLevel(cost_value) {
-      if (cost_value === null || cost_value === undefined) return "Unknown";
-      if (cost_value === 0) return "Free";
-      if (cost_value > 0 && cost_value <= 10) return "Low";
-      if (cost_value > 10 && cost_value <= 40) return "Medium";
-      return "High";
-    }
+  ]; // end transportData
 
-    // =========================================================
-    // FORMAT COST for display
-    // =========================================================
-    function formatCost(row) {
-      if (row.cost_value === null || row.cost_value === undefined) {
-        return "<span class='cost-meta'>—</span>";
-      }
-      const currency = row.cost_currency || "";
-      const val = row.cost_value === 0 ? "Free" : row.cost_value.toLocaleString();
-      return `<span class="cost-value">${val === "Free" ? "Free" : val + "\u00a0" + currency}</span>`;
-    }
+  // ================================================================
+  // SUSTAINABILITY GRADE RULESET
+  // Edit this to change how grades are assigned per display_type.
+  // ================================================================
+  const GRADE_RULES = {
+    "Public Transit":          "B",  // some entries override to A (metro/tram-heavy)
+    "Bike Share":              "A",
+    "Airport Transport":       "C",
+    "Student Pass / Discount": "Unknown",
+    "Rail Pass":               "A"
+  };
+  // Per-entry grade is set directly in the data above (field: grade).
+  // The GRADE_RULES object is kept for reference / future automation.
 
-    // =========================================================
-    // FILTER POPULATION
-    // =========================================================
-    function getUniqueLocations() {
-      const seen = new Set();
-      return transportData
-        .map(r => r.location)
-        .filter(l => { if (seen.has(l)) return false; seen.add(l); return true; })
-        .sort();
-    }
+  // ================================================================
+  // COST LEVEL FILTER — derives from cost_level field on each entry
+  // ================================================================
 
-    function getUniqueTypes() {
-      const seen = new Set();
-      return transportData
-        .map(r => r.transportation_type)
-        .filter(t => { if (seen.has(t)) return false; seen.add(t); return true; })
-        .sort();
-    }
-
-    function populateFilters() {
-      const locationSel = document.getElementById("locationFilter");
-      getUniqueLocations().forEach(loc => {
+  // ================================================================
+  // FILTER POPULATION
+  // ================================================================
+  function populateLocationFilter() {
+    const sel = document.getElementById("locationFilter");
+    const seen = new Set();
+    transportData.forEach(r => {
+      if (!seen.has(r.location)) {
+        seen.add(r.location);
         const opt = document.createElement("option");
-        opt.value = loc;
-        opt.textContent = loc;
-        locationSel.appendChild(opt);
-      });
-
-      const typeSel = document.getElementById("typeFilter");
-      getUniqueTypes().forEach(type => {
-        const opt = document.createElement("option");
-        opt.value = type;
-        opt.textContent = type;
-        typeSel.appendChild(opt);
-      });
-    }
-
-    // =========================================================
-    // FILTER LOGIC
-    // =========================================================
-    function getFilteredData() {
-      const locationVal = document.getElementById("locationFilter").value;
-      const typeVal     = document.getElementById("typeFilter").value;
-      const costVal     = document.getElementById("costFilter").value;
-      const gradeVal    = document.getElementById("gradeFilter").value;
-
-      return transportData.filter(row => {
-        // 1. Location – exact match
-        if (locationVal !== "all" && row.location !== locationVal) return false;
-
-        // 2. Transportation type – exact match against the type field
-        if (typeVal !== "all" && row.transportation_type !== typeVal) return false;
-
-        // 3. Cost level – derived from cost_value
-        if (costVal !== "all") {
-          if (deriveCostLevel(row.cost_value) !== costVal) return false;
-        }
-
-        // 4. Sustainability grade – derived from transportation_type
-        if (gradeVal !== "all") {
-          if (deriveSustainabilityGrade(row.transportation_type) !== gradeVal) return false;
-        }
-
-        return true;
-      });
-    }
-
-    // =========================================================
-    // RENDER TABLE
-    // =========================================================
-    function renderTable() {
-      const filtered = getFilteredData();
-      const tbody = document.getElementById("tableBody");
-      const noResults = document.getElementById("noResults");
-      const summaryText = document.getElementById("summaryText");
-
-      tbody.innerHTML = "";
-
-      if (filtered.length === 0) {
-        noResults.style.display = "block";
-        summaryText.innerHTML = "<strong>0</strong> options found.";
-        return;
+        opt.value = r.location;
+        opt.textContent = r.location;
+        sel.appendChild(opt);
       }
+    });
+  }
 
-      noResults.style.display = "none";
-      summaryText.innerHTML = `<strong>${filtered.length}</strong> option${filtered.length !== 1 ? "s" : ""} found.`;
+  // ================================================================
+  // FILTER LOGIC
+  // ================================================================
+  function getFiltered() {
+    const loc   = document.getElementById("locationFilter").value;
+    const type  = document.getElementById("typeFilter").value;
+    const cost  = document.getElementById("costFilter").value;
+    const grade = document.getElementById("gradeFilter").value;
 
-      filtered.forEach(row => {
-        const grade     = deriveSustainabilityGrade(row.transportation_type);
-        const costLevel = deriveCostLevel(row.cost_value);
+    return transportData.filter(r => {
+      if (loc   !== "all" && r.location     !== loc)   return false;
+      if (type  !== "all" && r.display_type !== type)  return false;
+      if (cost  !== "all" && r.cost_level   !== cost)  return false;
+      if (grade !== "all" && r.grade        !== grade) return false;
+      return true;
+    });
+  }
 
+  // ================================================================
+  // RENDER TABLE
+  // ================================================================
+  function renderTable() {
+    const filtered  = getFiltered();
+    const tbody     = document.getElementById("tableBody");
+    const noResults = document.getElementById("noResults");
+    const summary   = document.getElementById("summaryText");
+
+    tbody.innerHTML = "";
+
+    if (filtered.length === 0) {
+      noResults.style.display = "block";
+      summary.innerHTML = "<strong>0</strong> options found.";
+      return;
+    }
+
+    noResults.style.display = "none";
+    summary.innerHTML = `<strong>${filtered.length}</strong> option${filtered.length !== 1 ? "s" : ""} found. Click a row for details.`;
+
+    filtered.forEach(row => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("tabindex", "0");
+      tr.setAttribute("role", "button");
+      tr.setAttribute("aria-label", `Details for ${row.option_name}`);
+
+      tr.innerHTML = `
+        <td><span class="location-name">${esc(row.location)}</span></td>
+        <td><span class="option-name">${esc(row.option_name)}</span></td>
+        <td><span class="pill pill-type">${esc(row.display_type)}</span></td>
+        <td><span class="cost-display">${esc(row.cost_display)}</span></td>
+        <td><span class="cost-basis-text">${esc(row.cost_basis)}</span></td>
+        <td><span class="pill grade-badge grade-${esc(row.grade)}">${esc(row.grade)}</span></td>
+      `;
+
+      tr.addEventListener("click",    () => openDetail(row));
+      tr.addEventListener("keypress", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetail(row); } });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ================================================================
+  // DETAIL MODAL
+  // ================================================================
+  function openDetail(row) {
+    document.getElementById("detailTitle").textContent    = row.option_name;
+    document.getElementById("detailSubtitle").textContent = row.location;
+
+    document.getElementById("detailTypeLabel").textContent = row.display_type;
+
+    const gradeEl = document.getElementById("detailGrade");
+    gradeEl.textContent = `Grade ${row.grade}`;
+    gradeEl.className   = `pill grade-badge grade-${row.grade}`;
+
+    document.getElementById("detailDescription").textContent = row.description || "No description available.";
+    document.getElementById("detailAccess").textContent      = row.how_to_access || "See the official source for access instructions.";
+    document.getElementById("detailNote").textContent        = row.note || "";
+
+    // Build cost content — tiers table if multiple, single value otherwise
+    const costContent = document.getElementById("detailCostContent");
+    costContent.innerHTML = "";
+
+    if (row.tiers && row.tiers.length > 0) {
+      const table = document.createElement("table");
+      table.className = "tiers-table";
+      table.innerHTML = `<thead><tr><th>Option</th><th>Cost</th></tr></thead>`;
+      const tbody = document.createElement("tbody");
+      row.tiers.forEach(t => {
         const tr = document.createElement("tr");
-        tr.setAttribute("tabindex", "0");
-        tr.setAttribute("role", "button");
-        tr.setAttribute("aria-label", `Details for ${row.option_name}`);
-
-        // Format cost display
-        let costDisplay = "—";
-        if (row.cost_value !== null && row.cost_value !== undefined) {
-          costDisplay = row.cost_value === 0
-            ? "Free"
-            : `${row.cost_value.toLocaleString()} ${row.cost_currency || ""}`.trim();
-        }
-
-        // Cost level pill colour class
-        const costLevelClass = {
-          Free: "grade-A",
-          Low: "grade-B",
-          Medium: "grade-C",
-          High: "grade-D",
-          Unknown: "grade-Unknown"
-        }[costLevel] || "grade-Unknown";
-
-        tr.innerHTML = `
-          <td class="location-cell">
-            <div class="location-name">${escHtml(row.location)}</div>
-          </td>
-          <td>
-            <span class="pill pill-category">${escHtml(row.transportation_type)}</span>
-          </td>
-          <td>
-            <div class="option-name">${escHtml(row.option_name)}</div>
-          </td>
-          <td class="cost-cell">
-            <span class="cost-value">${escHtml(costDisplay)}</span>
-          </td>
-          <td>
-            <span class="cost-meta">${escHtml(row.cost_basis || "—")}</span>
-          </td>
-          <td>
-            <span class="pill ${costLevelClass} grade-badge">${escHtml(costLevel)}</span>
-          </td>
-          <td>
-            <div class="grade-wrap">
-              <span class="pill grade-badge grade-${grade}">${grade}</span>
-            </div>
-          </td>
-          <td class="notes-cell">${escHtml(row.notes || "—")}</td>
-          <td>
-            ${row.source_url
-              ? `<a class="official-link" href="${escHtml(row.source_url)}" target="_blank" rel="noopener noreferrer">Source ↗</a>`
-              : "—"}
-          </td>
-        `;
-
-        tr.addEventListener("click", () => openDetail(row));
-        tr.addEventListener("keypress", e => {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDetail(row); }
-        });
-
+        tr.innerHTML = `<td>${esc(t.label)}</td><td><strong>${esc(t.cost)}</strong></td>`;
         tbody.appendChild(tr);
       });
+      table.appendChild(tbody);
+      costContent.appendChild(table);
+    } else {
+      const p = document.createElement("p");
+      p.textContent = row.cost_display || "—";
+      costContent.appendChild(p);
     }
 
-    // =========================================================
-    // DETAIL MODAL
-    // =========================================================
-    function openDetail(row) {
-      const grade     = deriveSustainabilityGrade(row.transportation_type);
-      const costLevel = deriveCostLevel(row.cost_value);
-
-      document.getElementById("detailTitle").textContent    = row.option_name || "—";
-      document.getElementById("detailSubtitle").textContent = row.location || "—";
-
-      const typeLabel = document.getElementById("detailTypeLabel");
-      typeLabel.textContent = row.transportation_type || "—";
-
-      const costLabel = document.getElementById("detailCostLabel");
-      costLabel.textContent = `Cost level: ${costLevel}`;
-
-      const gradeEl = document.getElementById("detailGrade");
-      gradeEl.textContent = `Grade ${grade}`;
-      gradeEl.className = `pill grade-badge grade-${grade}`;
-
-      // Cost value cell
-      let costStr = "Not listed";
-      if (row.cost_value !== null && row.cost_value !== undefined) {
-        costStr = row.cost_value === 0
-          ? "Free"
-          : `${row.cost_value.toLocaleString()} ${row.cost_currency || ""}`.trim();
-      }
-      document.getElementById("detailCostValue").textContent = costStr;
-
-      document.getElementById("detailCostBasis").textContent  = row.cost_basis || "—";
-      document.getElementById("detailNotes").textContent      = row.notes      || "No notes available.";
-      document.getElementById("detailFooterNote").textContent = `Transportation type: ${row.transportation_type || "—"}`;
-
-      const linkEl = document.getElementById("detailLink");
-      if (row.source_url) {
-        linkEl.href = row.source_url;
-        linkEl.style.display = "";
-      } else {
-        linkEl.href = "#";
-        linkEl.style.display = "none";
-      }
-
-      const backdrop = document.getElementById("detailBackdrop");
-      backdrop.style.display = "flex";
-      backdrop.setAttribute("aria-hidden", "false");
+    // Link
+    const linkEl = document.getElementById("detailLink");
+    if (row.source_url) {
+      linkEl.href = row.source_url;
+      linkEl.style.display = "";
+    } else {
+      linkEl.style.display = "none";
     }
 
-    function closeDetail() {
-      const backdrop = document.getElementById("detailBackdrop");
-      backdrop.style.display = "none";
-      backdrop.setAttribute("aria-hidden", "true");
-    }
+    const backdrop = document.getElementById("detailBackdrop");
+    backdrop.style.display = "flex";
+    backdrop.setAttribute("aria-hidden", "false");
+  }
 
-    // =========================================================
-    // RUBRIC MODAL
-    // =========================================================
-    function openRubric() {
-      const backdrop = document.getElementById("rubricBackdrop");
-      backdrop.style.display = "flex";
-      backdrop.setAttribute("aria-hidden", "false");
-    }
+  function closeDetail() {
+    const bd = document.getElementById("detailBackdrop");
+    bd.style.display = "none";
+    bd.setAttribute("aria-hidden", "true");
+  }
 
-    function closeRubric() {
-      const backdrop = document.getElementById("rubricBackdrop");
-      backdrop.style.display = "none";
-      backdrop.setAttribute("aria-hidden", "true");
-    }
+  // ================================================================
+  // RUBRIC MODAL
+  // ================================================================
+  function openRubric() {
+    const bd = document.getElementById("rubricBackdrop");
+    bd.style.display = "flex";
+    bd.setAttribute("aria-hidden", "false");
+  }
+  function closeRubric() {
+    const bd = document.getElementById("rubricBackdrop");
+    bd.style.display = "none";
+    bd.setAttribute("aria-hidden", "true");
+  }
 
-    // =========================================================
-    // UTILITY
-    // =========================================================
-    function escHtml(str) {
-      if (str === null || str === undefined) return "";
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-    }
+  // ================================================================
+  // UTILITY
+  // ================================================================
+  function esc(str) {
+    if (str === null || str === undefined) return "";
+    return String(str)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
 
-    // =========================================================
-    // EVENT LISTENERS
-    // =========================================================
-    document.getElementById("locationFilter").addEventListener("change", renderTable);
-    document.getElementById("typeFilter").addEventListener("change", renderTable);
-    document.getElementById("costFilter").addEventListener("change", renderTable);
-    document.getElementById("gradeFilter").addEventListener("change", renderTable);
+  // ================================================================
+  // EVENT LISTENERS
+  // ================================================================
+  document.getElementById("locationFilter").addEventListener("change", renderTable);
+  document.getElementById("typeFilter").addEventListener("change", renderTable);
+  document.getElementById("costFilter").addEventListener("change", renderTable);
+  document.getElementById("gradeFilter").addEventListener("change", renderTable);
 
-    document.getElementById("resetFilters").addEventListener("click", () => {
-      document.getElementById("locationFilter").value = "all";
-      document.getElementById("typeFilter").value     = "all";
-      document.getElementById("costFilter").value     = "all";
-      document.getElementById("gradeFilter").value    = "all";
-      renderTable();
+  document.getElementById("resetFilters").addEventListener("click", () => {
+    ["locationFilter","typeFilter","costFilter","gradeFilter"].forEach(id => {
+      document.getElementById(id).value = "all";
     });
-
-    document.getElementById("detailCloseBtn").addEventListener("click", closeDetail);
-    document.getElementById("detailBackdrop").addEventListener("click", e => {
-      if (e.target === document.getElementById("detailBackdrop")) closeDetail();
-    });
-
-    document.getElementById("rubricCloseBtn").addEventListener("click", closeRubric);
-    document.getElementById("rubricBackdrop").addEventListener("click", e => {
-      if (e.target === document.getElementById("rubricBackdrop")) closeRubric();
-    });
-
-    document.getElementById("openRubricBtn").addEventListener("click", openRubric);
-    document.getElementById("openRubricBtnHeader").addEventListener("click", openRubric);
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") { closeDetail(); closeRubric(); }
-    });
-
-    // =========================================================
-    // INIT
-    // =========================================================
-    populateFilters();
     renderTable();
-  </script>
+  });
+
+  document.getElementById("detailCloseBtn").addEventListener("click", closeDetail);
+  document.getElementById("detailBackdrop").addEventListener("click", e => {
+    if (e.target === document.getElementById("detailBackdrop")) closeDetail();
+  });
+
+  document.getElementById("rubricCloseBtn").addEventListener("click", closeRubric);
+  document.getElementById("rubricBackdrop").addEventListener("click", e => {
+    if (e.target === document.getElementById("rubricBackdrop")) closeRubric();
+  });
+
+  document.getElementById("openRubricBtn").addEventListener("click", openRubric);
+  document.getElementById("openRubricBtnHeader").addEventListener("click", openRubric);
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { closeDetail(); closeRubric(); }
+  });
+
+  // ================================================================
+  // INIT
+  // ================================================================
+  populateLocationFilter();
+  renderTable();
+</script>
 </body>
 </html>
