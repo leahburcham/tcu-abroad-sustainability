@@ -65,6 +65,14 @@
     .intro-block { background: #faf9fd; border: 1px solid #ece7f7; border-radius: 12px; padding: 0.95rem 1rem; }
     .intro-block h3 { font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tcu-purple); margin-bottom: 0.4rem; }
     .intro-block p { font-size: 0.9rem; color: var(--muted); line-height: 1.55; }
+    .calc-link {
+      display: inline-block; margin-top: 0.6rem;
+      font-size: 0.84rem; font-weight: 700;
+      color: #fff; background: var(--tcu-purple);
+      padding: 0.4rem 0.85rem; border-radius: 999px;
+      text-decoration: none;
+    }
+    .calc-link:hover { background: var(--tcu-purple-dark); }
 
     /* ---- Filters ---- */
     .filters-card { padding: 1rem; margin-bottom: 1rem; }
@@ -186,7 +194,19 @@
 
     .modal-body { padding: 1.1rem 1.25rem 1.25rem; overflow-y: auto; flex: 1 1 0; min-height: 0; }
 
-    .detail-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+    .detail-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.85rem; align-items: center; }
+
+    /* carbon savings banner */
+    .carbon-banner {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: #e8f7ef; border: 1px solid #b2dfc6;
+      border-radius: 12px; padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .carbon-banner .leaf { font-size: 1.4rem; flex-shrink: 0; }
+    .carbon-banner-text { font-size: 0.93rem; color: #0c5c36; line-height: 1.45; }
+    .carbon-banner-text strong { font-size: 1.05rem; }
+    .carbon-banner-source { font-size: 0.75rem; color: #3a7a56; margin-top: 0.15rem; }
 
     /* description block */
     .detail-description {
@@ -288,26 +308,32 @@
       <div class="intro-block">
         <h3>Environmental Impacts of Transport Emissions</h3>
         <p>
-          Transportation accounts for roughly <strong>23% of global CO₂ emissions</strong> from energy use.
-          A single ride-hail trip can emit 50–70% more carbon per passenger-mile than the equivalent
-          bus or metro journey. Across a full semester, those choices compound significantly.
+          Transportation accounts for roughly <strong>23% of global CO₂ emissions</strong> from energy
+          use (IEA). A typical car emits ~170&nbsp;g CO₂ per passenger-km. Metro and tram systems emit
+          just 6–30&nbsp;g. Ride-hail trips emit <strong>50–70% more</strong> carbon than the equivalent
+          bus or metro journey. Across a full semester, those daily choices add up to hundreds of
+          kilograms of avoidable emissions.
         </p>
       </div>
-      <div class="intro-block">
-        <h3>Before You Go</h3>
+      <div class="intro-block co2-calc-block">
+        <h3>Calculate Your Flight’s Carbon Footprint</h3>
         <p>
-          Before arriving in your host city, take a few minutes to review the transportation options
-          available there. Many study abroad destinations already have strong public transportation
-          systems, student transit passes, and bike-share programs that can make daily travel easier,
-          cheaper, and more sustainable than relying on rideshare apps.
+          Before you even arrive, your flight is the single largest part of your travel footprint.
+          Use the ICAO Carbon Emissions Calculator — the official UN aviation tool — to see exactly
+          how much CO₂ your flight generates per passenger.
         </p>
+        <a href="https://www.icao.int/environmental-protection/environmental-tools/icec"
+           target="_blank" rel="noopener noreferrer" class="calc-link">
+          Calculate my flight’s footprint ↗
+        </a>
       </div>
       <div class="intro-block">
         <h3>How To Use This Table</h3>
         <p>
           Each row represents a specific ticketing option or pass at a study abroad location.
           Use the filters below to narrow by city, transport type, cost level, or sustainability
-          grade. Click any row for the full details.
+          grade. Click any row to see full details — including an estimate of how much CO₂ that
+          option saves compared to a typical ride-hail trip.
         </p>
       </div>
     </div>
@@ -418,7 +444,16 @@
         <span id="detailGrade" class="pill grade-badge"></span>
       </div>
 
-      <!-- Description + how to access -->
+      <!-- Carbon savings banner -->
+      <div class="carbon-banner" id="carbonBanner" style="display:none">
+        <span class="leaf">🌱</span>
+        <div>
+          <div class="carbon-banner-text" id="carbonBannerText"></div>
+          <div class="carbon-banner-source" id="carbonBannerSource"></div>
+        </div>
+      </div>
+
+      <!-- Description -->
       <div class="detail-description" id="detailDescription"></div>
 
       <div class="detail-grid">
@@ -1133,6 +1168,39 @@
   // The GRADE_RULES object is kept for reference / future automation.
 
   // ================================================================
+  // CARBON SAVINGS ESTIMATES
+  // Baseline: a typical ride-hail/taxi trip emits ~170 g CO₂/passenger-km
+  // (solo car avg ~170 g CO₂/pkm, EPA/IEA data).
+  // Reduction % = (baseline − mode_avg) / baseline × 100
+  //
+  // Sources:
+  //   MIT Climate Portal / IEA: metro/tram 6–30 g, bus 22–89 g, bike ~0–16 g
+  //   EPA 2023: transit bus 176.9 g CO₂/passenger-mile (lightly loaded);
+  //             well-loaded urban bus ~70–80 g CO₂/pkm
+  //   Our World in Data (2023): cycling 16–50 g CO₂eq/km
+  //   Union of Concerned Scientists / UCLA: public transit cuts CO₂ ~45–70%
+  //   Airport coaches/trains: shared, ~60 g CO₂/pkm average
+  // ================================================================
+  const CARBON_SAVINGS = {
+    // grade → { pct, label, source }
+    "A-bike":    { pct: 95, label: "Bike share produces virtually zero direct emissions — roughly <strong>95% less CO₂</strong> per trip than a typical ride-hail or taxi.", source: "Source: Our World in Data, 2023 — cycling emits ~0–16 g CO₂/km vs ~170 g for a solo car." },
+    "A-transit": { pct: 85, label: "Metro, tram, and rail systems emit just 6–30 g CO₂ per passenger-km — roughly <strong>85% less</strong> than a typical ride-hail or taxi.", source: "Source: IEA / MIT Climate Portal — cars emit ~170 g CO₂/pkm; metro/rail emit 6–30 g CO₂/pkm." },
+    "A-rail":    { pct: 82, label: "Intercity rail emits roughly 6–41 g CO₂ per passenger-km — about <strong>82% less</strong> than flying the same route on a short-haul flight.", source: "Source: Our World in Data, 2023 — short-haul flights emit ~255 g CO₂/pkm; rail emits ~6–41 g." },
+    "B":         { pct: 55, label: "City buses and shared shuttles typically emit <strong>~55% less CO₂</strong> per passenger than a solo ride-hail or taxi trip.", source: "Source: EPA 2023 / UCLA Transportation — well-loaded urban buses emit ~70–80 g CO₂/pkm vs ~170 g for a solo car." },
+    "C":         { pct: 40, label: "Shared airport transport (bus or train) emits roughly <strong>40% less CO₂ per passenger</strong> than a private taxi or ride-hail to/from the airport.", source: "Source: IEA / Union of Concerned Scientists — shared coaches average ~60 g CO₂/pkm vs ~100–170 g for a private taxi." },
+    "Unknown":   null
+  };
+
+  function getCarbonSavings(row) {
+    if (row.display_type === "Bike Share")       return CARBON_SAVINGS["A-bike"];
+    if (row.display_type === "Rail Pass")        return CARBON_SAVINGS["A-rail"];
+    if (row.display_type === "Airport Transport") return CARBON_SAVINGS["C"];
+    if (row.grade === "A")                       return CARBON_SAVINGS["A-transit"];
+    if (row.grade === "B")                       return CARBON_SAVINGS["B"];
+    return CARBON_SAVINGS["Unknown"];
+  }
+
+  // ================================================================
   // COST LEVEL FILTER — derives from cost_level field on each entry
   // ================================================================
 
@@ -1231,6 +1299,19 @@
 
     document.getElementById("detailDescription").textContent = row.description || "No description available.";
     document.getElementById("detailNote").textContent        = row.note || "";
+
+    // Carbon savings banner
+    const banner     = document.getElementById("carbonBanner");
+    const bannerText = document.getElementById("carbonBannerText");
+    const bannerSrc  = document.getElementById("carbonBannerSource");
+    const savings    = getCarbonSavings(row);
+    if (savings) {
+      bannerText.innerHTML = savings.label;
+      bannerSrc.textContent = savings.source;
+      banner.style.display = "flex";
+    } else {
+      banner.style.display = "none";
+    }
 
     // Build cost content — full-width tiers table if multiple, single value otherwise
     const costCard  = document.getElementById("detailCostCard");
