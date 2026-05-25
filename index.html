@@ -131,6 +131,7 @@
     .location-name { font-weight: 700; color: var(--text); }
     .option-name { font-weight: 600; color: var(--text); }
     .cost-display { font-weight: 700; color: var(--text); white-space: nowrap; }
+    .varies-hint { font-size: 0.78rem; color: var(--tcu-purple); font-style: italic; }
     .cost-basis-text { font-size: 0.82rem; color: var(--muted); }
 
     /* ---- Pills ---- */
@@ -165,7 +166,7 @@
       width: min(860px, 100%); max-height: 92vh; overflow: hidden;
       background: #fff; border-radius: 18px;
       box-shadow: 0 24px 80px rgba(0,0,0,0.28);
-      display: flex; flex-direction: column;
+      display: flex; flex-direction: column; min-height: 0;
     }
     .modal.small { width: min(680px, 100%); }
 
@@ -183,7 +184,7 @@
       flex-shrink: 0;
     }
 
-    .modal-body { padding: 1.1rem 1.25rem 1.25rem; overflow-y: auto; }
+    .modal-body { padding: 1.1rem 1.25rem 1.25rem; overflow-y: auto; flex: 1 1 0; min-height: 0; }
 
     .detail-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
 
@@ -204,6 +205,10 @@
     }
     .detail-card p { font-size: 0.91rem; color: var(--text); line-height: 1.55; }
     .detail-card.full { grid-column: span 2; }
+
+    /* cost list inside how-to-access card */
+    .access-tiers { margin: 0.6rem 0 0 1rem; padding: 0; font-size: 0.88rem; color: var(--text); line-height: 1.7; }
+    .access-tiers li { list-style: disc; }
 
     /* cost tiers table inside modal */
     .tiers-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.4rem; }
@@ -334,9 +339,9 @@
         <select id="costFilter">
           <option value="all">All cost levels</option>
           <option value="Free">Free ($0)</option>
-          <option value="Low">Low (under $11)</option>
-          <option value="Medium">Medium ($11–$40)</option>
-          <option value="High">High (over $40)</option>
+          <option value="Low">Under $11</option>
+          <option value="Medium">$11–$40</option>
+          <option value="High">Over $40</option>
           <option value="Unknown">Unknown / Varies</option>
         </select>
       </div>
@@ -1176,7 +1181,10 @@
         <td><span class="location-name">${esc(row.location)}</span></td>
         <td><span class="option-name">${esc(row.option_name)}</span></td>
         <td><span class="pill pill-type">${esc(row.display_type)}</span></td>
-        <td><span class="cost-display">${esc(row.cost_display)}</span></td>
+        <td>
+          <span class="cost-display">${esc(row.cost_display)}</span>
+          ${row.cost_display === 'Varies' ? '<br><span class="varies-hint">Click for more information</span>' : ''}
+        </td>
         <td><span class="cost-basis-text">${esc(row.cost_basis)}</span></td>
         <td><span class="pill grade-badge grade-${esc(row.grade)}">${esc(row.grade)}</span></td>
       `;
@@ -1202,7 +1210,6 @@
     gradeEl.className   = `pill grade-badge grade-${row.grade}`;
 
     document.getElementById("detailDescription").textContent = row.description || "No description available.";
-    document.getElementById("detailAccess").textContent      = row.how_to_access || "See the official source for access instructions.";
     document.getElementById("detailNote").textContent        = row.note || "";
 
     // Build cost content — tiers table if multiple, single value otherwise
@@ -1225,6 +1232,26 @@
       const p = document.createElement("p");
       p.textContent = row.cost_display || "—";
       costContent.appendChild(p);
+    }
+
+    // Build How to access — plain text, then append tiers inline if present
+    const accessEl = document.getElementById("detailAccess");
+    accessEl.innerHTML = "";
+    const accessText = row.how_to_access || "See the official source for access instructions.";
+    if (row.tiers && row.tiers.length > 0) {
+      const textNode = document.createElement("span");
+      textNode.textContent = accessText;
+      accessEl.appendChild(textNode);
+      const tierList = document.createElement("ul");
+      tierList.className = "access-tiers";
+      row.tiers.forEach(t => {
+        const li = document.createElement("li");
+        li.innerHTML = `${esc(t.label)} — <strong>${esc(t.cost)}</strong>`;
+        tierList.appendChild(li);
+      });
+      accessEl.appendChild(tierList);
+    } else {
+      accessEl.textContent = accessText;
     }
 
     // Link
