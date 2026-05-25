@@ -206,9 +206,15 @@
     .detail-card p { font-size: 0.91rem; color: var(--text); line-height: 1.55; }
     .detail-card.full { grid-column: span 2; }
 
-    /* cost list inside how-to-access card */
-    .access-tiers { margin: 0.6rem 0 0 1rem; padding: 0; font-size: 0.88rem; color: var(--text); line-height: 1.7; }
-    .access-tiers li { list-style: disc; }
+    /* purchase link inside access card */
+    .buy-link {
+      display: inline-block; margin-top: 0.75rem;
+      font-size: 0.86rem; font-weight: 700;
+      color: #fff; background: var(--tcu-purple);
+      padding: 0.45rem 0.9rem; border-radius: 999px;
+      text-decoration: none; white-space: nowrap;
+    }
+    .buy-link:hover { background: var(--tcu-purple-dark); }
 
     /* cost tiers table inside modal */
     .tiers-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.4rem; }
@@ -1226,11 +1232,16 @@
     document.getElementById("detailDescription").textContent = row.description || "No description available.";
     document.getElementById("detailNote").textContent        = row.note || "";
 
-    // Build cost content — tiers table if multiple, single value otherwise
+    // Build cost content — full-width tiers table if multiple, single value otherwise
+    const costCard  = document.getElementById("detailCostCard");
     const costContent = document.getElementById("detailCostContent");
     costContent.innerHTML = "";
 
-    if (row.tiers && row.tiers.length > 0) {
+    const hasTiers = row.tiers && row.tiers.length > 0;
+
+    if (hasTiers) {
+      // Span the cost card across the full grid width so nothing is clipped
+      costCard.classList.add("full");
       const table = document.createElement("table");
       table.className = "tiers-table";
       table.innerHTML = `<thead><tr><th>Option</th><th>Cost</th></tr></thead>`;
@@ -1243,29 +1254,30 @@
       table.appendChild(tbody);
       costContent.appendChild(table);
     } else {
+      costCard.classList.remove("full");
       const p = document.createElement("p");
       p.textContent = row.cost_display || "—";
       costContent.appendChild(p);
     }
 
-    // Build How to access — plain text, then append tiers inline if present
+    // How to access — plain text only (no repeated tier list)
+    // If there are tiers, add a purchase link button instead
     const accessEl = document.getElementById("detailAccess");
     accessEl.innerHTML = "";
-    const accessText = row.how_to_access || "See the official source for access instructions.";
-    if (row.tiers && row.tiers.length > 0) {
-      const textNode = document.createElement("span");
-      textNode.textContent = accessText;
-      accessEl.appendChild(textNode);
-      const tierList = document.createElement("ul");
-      tierList.className = "access-tiers";
-      row.tiers.forEach(t => {
-        const li = document.createElement("li");
-        li.innerHTML = `${esc(t.label)} — <strong>${esc(t.cost)}</strong>`;
-        tierList.appendChild(li);
-      });
-      accessEl.appendChild(tierList);
-    } else {
-      accessEl.textContent = accessText;
+    accessEl.textContent = row.how_to_access || "See the official source for access instructions.";
+
+    // Purchase link inside access card (only shown when source_url exists and there are tiers)
+    const existingBuyBtn = document.getElementById("detailBuyBtn");
+    if (existingBuyBtn) existingBuyBtn.remove();
+    if (hasTiers && row.source_url) {
+      const buyBtn = document.createElement("a");
+      buyBtn.id        = "detailBuyBtn";
+      buyBtn.href      = row.source_url;
+      buyBtn.target    = "_blank";
+      buyBtn.rel       = "noopener noreferrer";
+      buyBtn.className = "buy-link";
+      buyBtn.textContent = "Buy or view passes ↗";
+      accessEl.insertAdjacentElement("afterend", buyBtn);
     }
 
     // Link
