@@ -163,12 +163,12 @@
       padding: 1rem; z-index: 50;
     }
     .modal {
-      width: min(860px, 100%); max-height: 92vh; overflow: hidden;
+      width: min(1100px, 96vw); max-height: 92vh; overflow: hidden;
       background: #fff; border-radius: 18px;
       box-shadow: 0 24px 80px rgba(0,0,0,0.28);
       display: flex; flex-direction: column; min-height: 0;
     }
-    .modal.small { width: min(680px, 100%); }
+    .modal.small { width: min(780px, 96vw); }
 
     .modal-header {
       padding: 1.1rem 1.25rem 1rem;
@@ -272,10 +272,11 @@
   <section class="intro-card" aria-label="Why sustainable transportation matters">
     <h2>Why Sustainable Transportation Matters</h2>
     <p class="intro-lead">
-      Transportation is one of the largest contributors to greenhouse gas emissions worldwide. While air
-      travel is often unavoidable for study abroad, local transportation choices are still something
-      students can control. Using lower-impact options once you arrive can help reduce your day-to-day
-      transportation footprint while also making it easier to live like a local.
+      TCU is dedicated to ethical and responsible global citizenship. Transportation is one of the largest
+      contributors to greenhouse gas emissions worldwide. While air travel is often unavoidable for study
+      abroad, local transportation choices are still something students can control. Using lower-impact
+      options once you arrive can help reduce your day-to-day transportation footprint while also making
+      it easier to live like a local.
     </p>
     <div class="intro-grid">
       <div class="intro-block">
@@ -660,25 +661,40 @@
     {
       location: "Prague, Czech Republic (Charles University)",
       display_type: "Public Transit",
-      option_name: "Prague PID Transit (Metro, Tram & Bus)",
+      option_name: "Prague PID Short-Term Tickets (Metro, Tram & Bus)",
       cost_display: "Varies",
       cost_basis: "Varies",
       cost_level: "Low",
       grade: "A",
-      description: "Prague's integrated PID transit system covers the metro (3 lines), trams, and buses across the city. For students aged 18–26 with a valid study certificate, heavily discounted subscription passes are available — the student monthly pass is one of the best-value transit deals in this dataset. Short-term paper or app tickets are also available for occasional use.",
-      how_to_access: "Download the PID Lítačka app to buy app tickets (slightly cheaper than paper). For student subscription passes, visit a PID customer centre (e.g. at main metro stations) with your valid Charles University student ID or study certificate to verify eligibility and get the discounted pass loaded onto a Lítačka card.",
+      description: "Prague's integrated PID transit system covers the metro (3 lines), trams, and buses across the city. Short-term tickets are ideal for occasional trips or your first few days before setting up a longer pass. App tickets are slightly cheaper than paper. All ticket types are valid across metro, tram, and bus.",
+      how_to_access: "Download the PID Lítačka app to buy app tickets directly on your phone — no machine needed. Paper tickets can be bought at metro station machines, newsstands, and tobacco shops. Validate paper tickets in the yellow machines when you board. App tickets activate automatically.",
       tiers: [
-        { label: "30-min ticket (app)",     cost: "CZK 36" },
-        { label: "30-min ticket (paper)",   cost: "CZK 39" },
-        { label: "90-min ticket (app)",     cost: "CZK 46" },
-        { label: "90-min ticket (paper)",   cost: "CZK 50" },
-        { label: "24-hour pass (app)",      cost: "CZK 140" },
-        { label: "72-hour pass (app)",      cost: "CZK 340" },
-        { label: "Student monthly pass",    cost: "CZK 130" },
-        { label: "Student 3-month pass",    cost: "CZK 360" },
-        { label: "Student annual pass",     cost: "CZK 1,280" }
+        { label: "30-min ticket (app)",   cost: "CZK 36" },
+        { label: "30-min ticket (paper)", cost: "CZK 39" },
+        { label: "90-min ticket (app)",   cost: "CZK 46" },
+        { label: "90-min ticket (paper)", cost: "CZK 50" },
+        { label: "24-hour pass (app)",    cost: "CZK 140" },
+        { label: "72-hour pass (app)",    cost: "CZK 340" }
       ],
-      note: "CZK = Czech Koruna. As of 2025, roughly CZK 24 ≈ $1 USD. Student passes require proof of enrollment at a Czech institution.",
+      note: "CZK = Czech Koruna. As of 2025, roughly CZK 24 ≈ $1 USD.",
+      source_url: "https://pid.cz/en/tickets-and-fare/"
+    },
+    {
+      location: "Prague, Czech Republic (Charles University)",
+      display_type: "Student Pass / Discount",
+      option_name: "Prague PID Student Subscription Pass",
+      cost_display: "Varies",
+      cost_basis: "Varies",
+      cost_level: "Low",
+      grade: "A",
+      description: "Students aged 18–26 enrolled at a Czech institution can access deeply discounted monthly, quarterly, and annual subscription passes on Prague's full PID network (metro, tram, and bus). The student monthly pass is one of the best-value transit deals in this dataset — roughly CZK 130 per month (under $6 USD) for unlimited travel across the city.",
+      how_to_access: "Visit a PID customer centre (located at main metro stations such as Muzeum, Florenc, or Nádraží Holešovice) with your valid Charles University student ID and enrollment certificate. Staff will verify eligibility and load the discounted pass onto a Lítačka card. The card has a small one-time deposit.",
+      tiers: [
+        { label: "Student monthly pass",  cost: "CZK 130" },
+        { label: "Student 3-month pass",  cost: "CZK 360" },
+        { label: "Student annual pass",   cost: "CZK 1,280" }
+      ],
+      note: "Student passes require proof of enrollment at a Czech institution and are for students aged 18–26. CZK = Czech Koruna; roughly CZK 24 ≈ $1 USD.",
       source_url: "https://pid.cz/en/tickets-and-fare/"
     },
 
